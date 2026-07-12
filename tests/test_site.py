@@ -6,11 +6,15 @@
 import pathlib
 import re
 import sys
+from urllib.parse import urlparse
 
 import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 PUBLIC = ROOT / "public"
+# baseURL 可能帶路徑前綴（如 GitHub Pages 專案頁 /personal-site），
+# 產出的 href 會含這段前綴，但 public/ 實體目錄不會，比對前先剝掉。
+BASE_PATH = urlparse(yaml.safe_load((ROOT / "hugo.yaml").read_text())["baseURL"]).path.strip("/")
 
 # 各資料檔的必要欄位；BILINGUAL 欄位須為 {zh: ..., en: ...} 且兩者皆非空
 REQUIRED = {
@@ -67,10 +71,18 @@ for lang, page in [("zh", PUBLIC / "index.html"), ("en", PUBLIC / "en" / "index.
 # 3. 本地資源有效性：頁面引用的站內資源都存在於產出
 if PUBLIC.exists():
     for page in PUBLIC.rglob("*.html"):
-        for ref in re.findall(r'(?:src|href)="([^"#?]+)', page.read_text()):
+        # --minify 會拿掉沒有空白字元的屬性引號，兩種格式都要吃
+        for m in re.finditer(r'(?:src|href)=(?:"([^"#?]+)"|([^\s"\'>#?]+))', page.read_text()):
+            ref = m.group(1) or m.group(2)
             if re.match(r"https?:|mailto:|//", ref):
                 continue
-            target = (PUBLIC / ref.lstrip("/")) if ref.startswith("/") else (page.parent / ref)
+            if ref.startswith("/"):
+                rel = ref.lstrip("/")
+                if BASE_PATH and rel.startswith(BASE_PATH):
+                    rel = rel[len(BASE_PATH):].lstrip("/")
+                target = PUBLIC / rel if rel else PUBLIC / "index.html"
+            else:
+                target = page.parent / ref
             if target.is_dir():
                 target = target / "index.html"
             check(target.exists(), f"{page.relative_to(PUBLIC)} 引用不存在的資源 {ref}")

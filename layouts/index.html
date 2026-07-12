@@ -20,8 +20,8 @@
   <ul class="certs">
     {{ range hugo.Data.certifications }}
     <li class="cert">
-      <span class="cert-name">{{ with .url }}<a href="{{ . }}">{{ end }}{{ .name }}{{ with .url }}</a>{{ end }}</span>
-      <span class="cert-meta">{{ .issuer }} · {{ .year }}</span>
+      <span class="cert-name">{{ with .url }}<a href="{{ if hasPrefix . "http" }}{{ . }}{{ else }}{{ . | relURL }}{{ end }}" target="_blank" rel="noopener noreferrer">{{ end }}{{ .name }}{{ with .url }}</a>{{ end }}</span>
+      <span class="cert-meta">{{ .issuer }} · {{ .year }}{{ with .validThru }} · {{ i18n "valid_thru" }} {{ . }}{{ end }}</span>
     </li>
     {{ end }}
   </ul>
@@ -75,7 +75,7 @@
     <li class="row">
       <span class="year">{{ .year }}</span>
       <div>
-        <h3><a href="{{ .link }}">{{ index .title $l }}</a></h3>
+        <h3><a href="{{ .link }}" target="_blank" rel="noopener noreferrer">{{ index .title $l }}</a></h3>
         <p class="tags">{{ .event }}{{ with .note }} · {{ index . $l }}{{ end }}</p>
       </div>
     </li>

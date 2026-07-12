@@ -12,8 +12,8 @@
     zh: ScanPortal 原始碼檢測平台
     en: ScanPortal — Source Code Scanning Platform
   description:
-    zh: 一站式網頁原始碼檢測平台，獨立開發並成功售予 2 家企業客戶。
-    en: A one-stop web-based source code scanning platform, independently built and sold to 2 enterprise clients.
+    zh: 一站式網頁原始碼檢測平台，獨立主導 portal-agent 分離式架構設計（437 次程式提交），成功售予 2 家企業客戶。
+    en: A one-stop web-based source code scanning platform; independently led the portal-agent split architecture (437 commits), successfully sold to 2 enterprise clients.
 
 - id: financial-scanning-platform
   title:
@@ -22,3 +22,11 @@
   description:
     zh: 整合 WebInspect 與 Fortify SCA 的自動化掃描平台，歷經三年合作於 2025 年 9 月完成最終里程碑，售予一家金融上市機構。
     en: An automated scanning platform integrating WebInspect and Fortify SCA, delivered through its final milestone in a 3-year engagement in September 2025, sold to a listed financial institution.
+
+- id: devsecops-rollout
+  title:
+    zh: 企業級 DevSecOps 導入成效
+    en: Enterprise DevSecOps Rollout Impact
+  description:
+    zh: 主導軟體開發安全部門的自動化與流程優化——弱點處理量降低 51%，白箱顧問 SOP 效率提升約 2 倍，協助 7 家以上金融與科技產業企業客戶完成 DevSecOps 導入。
+    en: Led automation and process optimization for the software security team — cut vulnerability-handling volume by 51%, improved white-box consulting SOP throughput by roughly 2×, and helped 7+ enterprise clients across finance and tech adopt DevSecOps.

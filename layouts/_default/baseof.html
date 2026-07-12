@@ -54,7 +54,7 @@
   <p class="eyebrow">{{ i18n "contact" }}</p>
   <p class="lead">{{ i18n "contact_lead" }}</p>
   <a class="mail" href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
-  <p class="fine"><a href="{{ .Site.Params.github }}">GitHub</a> · <a href="{{ .Site.Params.linkedin }}">LinkedIn</a> · © {{ now.Year }} {{ .Site.Title }}</p>
+  <p class="fine"><a href="{{ .Site.Params.github }}" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="{{ .Site.Params.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a> · © {{ now.Year }} {{ .Site.Title }}</p>
 </footer>
 <script type="module" src="{{ "js/main.js" | relURL }}"></script>
 </body>

@@ -1,4 +1,5 @@
-# 新增認證：複製一個條目改內容即可。id 不可重複；url 選填。
+# 新增認證：複製一個條目改內容即可。id 不可重複；url 選填；validThru 選填（續證中才填）。
+# 憑證 PDF 存放在 static/certificates/，不依賴外部網站存活。
 - id: cissp
   name: CISSP
   issuer: ISC2
@@ -15,16 +16,17 @@
   name: ISO 27001:2022 Lead Auditor
   issuer: BSI
   year: 2023
-  url: https://lung-yu.github.io/personal-sites_V2/certificates/iso/ISO_27001_2022_LA.pdf
+  url: certificates/iso/ISO_27001_2022_LA.pdf
 
 - id: ceh
   name: CEH
   issuer: EC-Council
   year: 2014
-  url: https://lung-yu.github.io/personal-sites_V2/certificates/ec-council/ECC-CEH-Certificate.pdf
+  validThru: 2027
+  url: certificates/ec-council/ECC-CEH-Certificate.pdf
 
 - id: ipas
   name: iPAS 資安工程師（初級）
   issuer: iPAS
   year: 2021
-  url: https://lung-yu.github.io/personal-sites_V2/certificates/ipas/ipas_engineer.pdf
+  url: certificates/ipas/ipas_engineer.pdf
