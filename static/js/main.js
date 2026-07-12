@@ -7,8 +7,8 @@ const io = new IntersectionObserver(
 );
 document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-// 小螢幕或使用者要求省流量時跳過 3D（省 ~730KB 與 GPU），保留 CSS 漸層背景
-const skip3d = matchMedia("(max-width: 768px)").matches || navigator.connection?.saveData;
+// 僅在使用者明確開啟省流量模式時跳過 3D；3D 是本站的視覺簽名，行動裝置也保留
+const skip3d = navigator.connection?.saveData;
 
 const canvas = document.getElementById("hero3d");
 if (canvas && skip3d) canvas.remove();
