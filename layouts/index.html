@@ -30,13 +30,32 @@
 <section id="certifications" class="reveal">
   <p class="eyebrow">§03 · {{ i18n "certifications" }}</p>
   <ul class="certs">
-    {{ range hugo.Data.certifications }}
+    {{ range where hugo.Data.certifications "tier" "core" }}
     <li class="cert">
       <span class="cert-name">{{ with .url }}<a href="{{ if hasPrefix . "http" }}{{ . }}{{ else }}{{ . | relURL }}{{ end }}" target="_blank" rel="noopener noreferrer">{{ end }}{{ .name }}{{ with .url }}</a>{{ end }}</span>
       <span class="cert-meta">{{ .issuer }} · {{ .year }}{{ with .validThru }} · {{ i18n "valid_thru" }} {{ . }}{{ end }}</span>
     </li>
     {{ end }}
   </ul>
+
+  {{ $supporting := where hugo.Data.certifications "tier" "supporting" }}
+  {{ if $supporting }}
+  <p class="supporting-label">{{ i18n "certs_supporting" }}</p>
+  {{ range slice "Security" "Development" "Infrastructure" "Hardware" "Data" }}
+  {{ $items := where $supporting "category" . }}
+  {{ if $items }}
+  <div class="skills-group">
+    <p class="skills-cat">{{ . }}</p>
+    <div class="skills-tags">
+      {{ range $items }}
+      {{ if .url }}<a class="skill-tag" href="{{ if hasPrefix .url "http" }}{{ .url }}{{ else }}{{ .url | relURL }}{{ end }}" target="_blank" rel="noopener noreferrer">{{ .name }} · {{ .year }}</a>
+      {{ else }}<span class="skill-tag">{{ .name }} · {{ .year }}</span>{{ end }}
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+  {{ end }}
+  {{ end }}
 </section>
 
 <section id="services" class="reveal">

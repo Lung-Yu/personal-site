@@ -198,6 +198,7 @@ h3 { font-family: var(--serif); font-weight: 500; color: var(--paper); font-size
 .post .prose ul, .post .prose ol { margin: 1rem 0 1rem 1.3rem; }
 .post .prose li + li { margin-top: 0.4rem; }
 .post .prose hr { border: none; border-top: 1px solid var(--hairline); margin: 2.2rem 0; }
+.post .prose img { width: 100%; height: auto; border: 1px solid var(--hairline); border-radius: 3px; margin: 1.6rem 0; }
 .post .note { margin-top: 3rem; }
 
 /* ---- skills ---- */
@@ -228,6 +229,17 @@ ul.certs, ul.cards, ul.rows { list-style: none; padding: 0; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1rem;
+}
+.supporting-label {
+  margin-top: 2.6rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--hairline);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--fog);
+  opacity: 0.8;
+  margin-bottom: 1.4rem;
 }
 .cert {
   background: var(--ink-2);
@@ -304,6 +316,7 @@ footer .mail {
 }
 footer .mail:hover { color: var(--paper); border-color: var(--gold); }
 footer .fine { margin-top: 3rem; font-size: 0.8rem; opacity: 0.7; }
+footer .fine .icon { width: 0.85em; height: 0.85em; vertical-align: -0.1em; margin-right: 0.3em; }
 
 /* ---- motion ---- */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.8s ease, transform 0.8s ease; }

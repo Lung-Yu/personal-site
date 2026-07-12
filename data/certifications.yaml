@@ -1,21 +1,27 @@
 # 新增認證：複製一個條目改內容即可。id 不可重複；url 選填；validThru 選填（續證中才填）。
+# tier: core=顧問服務核心佐證（大卡片）；supporting=技術背景廣度（小標籤，依 category 分組）。
 # 憑證 PDF 存放在 static/certificates/，不依賴外部網站存活。
+
+# ---- core：資安核心認證 ----
 - id: cissp
   name: CISSP
   issuer: ISC2
   year: 2022
+  tier: core
   url: https://www.credly.com/badges/37b36bbe-cf5b-47fe-b697-71cca23bba6c
 
 - id: csslp
   name: CSSLP
   issuer: ISC2
   year: 2024
+  tier: core
   url: https://www.credly.com/badges/4eab1fd1-b3ed-4989-b6e6-5189e00822ab
 
 - id: iso27001-la
   name: ISO 27001:2022 Lead Auditor
   issuer: BSI
   year: 2023
+  tier: core
   url: certificates/iso/ISO_27001_2022_LA.pdf
 
 - id: ceh
@@ -23,10 +29,114 @@
   issuer: EC-Council
   year: 2014
   validThru: 2027
+  tier: core
   url: certificates/ec-council/ECC-CEH-Certificate.pdf
 
+- id: google-ccs
+  name: Google Cybersecurity Certificate
+  issuer: Google
+  year: 2023
+  tier: core
+
+# ---- supporting：技術背景廣度（依 category 分組顯示） ----
 - id: ipas
   name: iPAS 資安工程師（初級）
   issuer: iPAS
   year: 2021
+  tier: supporting
+  category: Security
   url: certificates/ipas/ipas_engineer.pdf
+
+- id: mcsd
+  name: MCSD：Web Applications
+  issuer: Microsoft
+  year: 2015
+  tier: supporting
+  category: Development
+  url: certificates/microsoft/mcsd-web-applications.pdf
+
+- id: ocpjwcd
+  name: OCPJWCD
+  issuer: Oracle
+  year: 2015
+  tier: supporting
+  category: Development
+  url: certificates/oracle/ocpjwcd.pdf
+
+- id: ocjp
+  name: OCJP
+  issuer: Oracle
+  year: 2015
+  tier: supporting
+  category: Development
+
+- id: mcp
+  name: MCP
+  issuer: Microsoft
+  year: 2014
+  tier: supporting
+  category: Development
+
+- id: ms-csharp
+  name: MS：C# Specialist
+  issuer: Microsoft
+  year: 2014
+  tier: supporting
+  category: Development
+
+- id: ms-web
+  name: MS：HTML5/JS/CSS3 Specialist
+  issuer: Microsoft
+  year: 2014
+  tier: supporting
+  category: Development
+
+- id: rhcva
+  name: RHCVA
+  issuer: Red Hat
+  year: 2013
+  tier: supporting
+  category: Infrastructure
+  url: certificates/red-hat/rhcva.pdf
+
+- id: mta-db
+  name: MTA：Database Administration
+  issuer: Microsoft
+  year: 2014
+  tier: supporting
+  category: Infrastructure
+
+- id: mta-network
+  name: MTA：Networking Fundamentals
+  issuer: Microsoft
+  year: 2012
+  tier: supporting
+  category: Infrastructure
+
+- id: hp-ata
+  name: HP ATA：Networks
+  issuer: HP
+  year: 2014
+  tier: supporting
+  category: Infrastructure
+
+- id: andes-advanced
+  name: Andes Certified Engineer（高級）
+  issuer: Andes
+  year: 2014
+  tier: supporting
+  category: Hardware
+
+- id: andes-intermediate
+  name: Andes Certified Engineer（中級）
+  issuer: Andes
+  year: 2014
+  tier: supporting
+  category: Hardware
+
+- id: big-data-knowledge
+  name: Big Data Knowledge Today
+  issuer: Silicon Stone
+  year: 2016
+  tier: supporting
+  category: Data

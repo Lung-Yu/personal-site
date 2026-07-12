@@ -6,6 +6,8 @@ summary: AI-assisted development changed how fast we write code — and it chang
 
 AI-assisted coding tools sped up development by an order of magnitude, but the secure software development lifecycle (SSDLC) didn't automatically get faster or safer alongside it. Speed is neutral — it amplifies capacity and risk in equal measure.
 
+![SSDLC pipeline from plan to ship, with the AI-assisted coding and AI-assisted review stages marked as a new attack surface and an AI-assisted triage point](/images/diagram-ai-era-ssdlc.svg)
+
 ## AI-generated code needs AI-speed review
 
 Code review used to bottleneck on headcount: a senior engineer can only review so many PRs a day. Once AI tooling doubles or triples the rate of code being written, a review process still paced for manual line-by-line reading becomes the new traffic jam in the SSDLC — and under deadline pressure, teams route around it instead of waiting for it.

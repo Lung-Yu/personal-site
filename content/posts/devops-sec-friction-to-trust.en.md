@@ -6,6 +6,8 @@ summary: Development and security don't have to be adversaries — adapted from 
 
 The most common complaint when a company adopts a security process isn't "this tool is bad" — it's "security is slowing down our release." Behind that sentence sits a deeper problem: dev and security teams are often not on the same side.
 
+![Left: a security gate blocking the path between dev and ship. Right: security embedded inline, moving alongside dev toward ship.](/images/diagram-friction-to-trust.svg)
+
 ## Security isn't a gate. It's a teammate.
 
 Most organizations position security as a gatekeeper — code gets reviewed after it's written, vulnerability reports get thrown back over the wall, and everyone waits to see who blinks first. This model manufactures conflict by design: developers feel targeted, security feels ignored.

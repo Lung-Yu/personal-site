@@ -18,7 +18,7 @@ BASE_PATH = urlparse(yaml.safe_load((ROOT / "hugo.yaml").read_text())["baseURL"]
 
 # 各資料檔的必要欄位；BILINGUAL 欄位須為 {zh: ..., en: ...} 且兩者皆非空
 REQUIRED = {
-    "certifications": ["id", "name", "issuer", "year"],
+    "certifications": ["id", "name", "issuer", "year", "tier"],
     "skills": ["id", "category", "items"],
     "services": ["id", "title", "description"],
     "track_record": ["id", "title", "description"],
