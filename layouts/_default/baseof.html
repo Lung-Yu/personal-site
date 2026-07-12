@@ -23,11 +23,11 @@
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": {{ .Site.Title | jsonify }},
-  "jobTitle": {{ i18n "job_title" | jsonify }},
+  "name": {{ .Site.Title }},
+  "jobTitle": {{ i18n "job_title" }},
   "email": "mailto:{{ .Site.Params.email }}",
-  "url": {{ .Permalink | jsonify }},
-  "sameAs": [{{ .Site.Params.github | jsonify }}]
+  "url": {{ .Permalink }},
+  "sameAs": [{{ .Site.Params.github }}]
 }
 </script>
 {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
