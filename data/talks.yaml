@@ -1,0 +1,35 @@
+# 講者紀錄：新增條目複製格式即可。title 需中英雙語；link 為公開場次頁面或影片。
+- id: devopsdays-tw-2026
+  title:
+    zh: AI 時代的 DevSecOps 變革：安全開發流程的重塑與實踐
+    en: 'DevSecOps Transformation in the AI Era: Reshaping and Practicing Secure Development'
+  event: DevOpsDays Taipei 2026
+  year: 2026
+  link: https://devopsdays.tw/2026/session/4746
+
+- id: hwdc-2025
+  title:
+    zh: AI 時代團隊管理的挑戰與策略
+    en: AI Era Team Management Challenges and Strategies
+  event: Hello World Dev Conference 2025
+  year: 2025
+  link: https://hwdc.ithome.com.tw/2025/session-page/4017
+
+- id: cybersec-2025
+  title:
+    zh: DevSecOps 與敏捷整合自動化安全測試
+    en: DevSecOps and Agile Integration of Automated Security Testing
+  event: CyberRes 2025
+  year: 2025
+  link: https://cybersec.ithome.com.tw/2025/session-page/3607
+
+- id: devopsdays-tw-2024
+  title:
+    zh: DevOps + Sec：強力後盾還是麻煩製造者？
+    en: 'DevOps + Sec: Strong Support or Troublemakers?'
+  event: DevOpsDays Taipei 2024
+  year: 2024
+  link: https://devopsdays.tw/2024/session-page/3022
+  note:
+    zh: 聽眾評分 4.47 / 5（本屆最高分 4.85）
+    en: Audience rating 4.47 / 5 (top score 4.85)

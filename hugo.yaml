@@ -17,3 +17,4 @@ disableKinds: [taxonomy, term, rss]
 params:
   email: workfile975@gmail.com
   github: https://github.com/Lung-Yu
+  linkedin: https://www.linkedin.com/in/lung-yu-tsai-633865100

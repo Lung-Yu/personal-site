@@ -39,8 +39,20 @@
   </ul>
 </section>
 
+<section id="track-record" class="reveal">
+  <p class="eyebrow">§04 · {{ i18n "track_record" }}</p>
+  <ul class="cards">
+    {{ range hugo.Data.track_record }}
+    <li class="card">
+      <h3>{{ index .title $l }}</h3>
+      <p>{{ index .description $l }}</p>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+
 <section id="projects" class="reveal">
-  <p class="eyebrow">§04 · {{ i18n "projects" }}</p>
+  <p class="eyebrow">§05 · {{ i18n "projects" }}</p>
   <ul class="rows">
     {{ range hugo.Data.projects }}
     <li class="row">
@@ -54,5 +66,20 @@
     {{ end }}
   </ul>
   <p class="note">{{ i18n "projects_note" }}</p>
+</section>
+
+<section id="speaking" class="reveal">
+  <p class="eyebrow">§06 · {{ i18n "speaking" }}</p>
+  <ul class="rows">
+    {{ range hugo.Data.talks }}
+    <li class="row">
+      <span class="year">{{ .year }}</span>
+      <div>
+        <h3><a href="{{ .link }}">{{ index .title $l }}</a></h3>
+        <p class="tags">{{ .event }}{{ with .note }} · {{ index . $l }}{{ end }}</p>
+      </div>
+    </li>
+    {{ end }}
+  </ul>
 </section>
 {{ end }}

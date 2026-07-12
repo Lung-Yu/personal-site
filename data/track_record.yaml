@@ -1,0 +1,24 @@
+# 實際交付成果：新增條目複製格式即可。title/description 需中英雙語。
+- id: polisana
+  title:
+    zh: Polisana 弱點管理平台
+    en: Polisana Vulnerability Management Platform
+  description:
+    zh: 自主研發的 AI-native 弱點管理平台，微服務架構；基礎設施由 On-demand GKE 演進為 Terraform 全 IaC 化管理，提升可靠性與可擴展性。
+    en: An AI-native vulnerability management platform built in-house with a microservices architecture; infrastructure evolved from on-demand GKE to fully Terraform-managed IaC on GCP.
+
+- id: scanportal
+  title:
+    zh: ScanPortal 原始碼檢測平台
+    en: ScanPortal — Source Code Scanning Platform
+  description:
+    zh: 一站式網頁原始碼檢測平台，獨立開發並成功售予 2 家企業客戶。
+    en: A one-stop web-based source code scanning platform, independently built and sold to 2 enterprise clients.
+
+- id: financial-scanning-platform
+  title:
+    zh: 金融業黑白箱自動化掃描平台
+    en: Financial-Sector Black/White-Box Scanning Platform
+  description:
+    zh: 整合 WebInspect 與 Fortify SCA 的自動化掃描平台，歷經三年合作於 2025 年 9 月完成最終里程碑，售予一家金融上市機構。
+    en: An automated scanning platform integrating WebInspect and Fortify SCA, delivered through its final milestone in a 3-year engagement in September 2025, sold to a listed financial institution.

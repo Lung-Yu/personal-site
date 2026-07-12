@@ -27,7 +27,7 @@
   "jobTitle": {{ i18n "job_title" }},
   "email": "mailto:{{ .Site.Params.email }}",
   "url": {{ .Permalink }},
-  "sameAs": [{{ .Site.Params.github }}]
+  "sameAs": [{{ .Site.Params.github }}, {{ .Site.Params.linkedin }}]
 }
 </script>
 {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
@@ -40,7 +40,9 @@
     <a href="#about">{{ i18n "about" }}</a>
     <a href="#certifications">{{ i18n "certifications" }}</a>
     <a href="#services">{{ i18n "services" }}</a>
+    <a href="#track-record">{{ i18n "track_record" }}</a>
     <a href="#projects">{{ i18n "projects" }}</a>
+    <a href="#speaking">{{ i18n "speaking" }}</a>
     <a href="#contact">{{ i18n "contact" }}</a>
     {{ range .Translations }}<a class="lang" href="{{ .RelPermalink }}" hreflang="{{ .Language.Locale }}">{{ .Language.Label }}</a>{{ end }}
   </nav>
@@ -52,7 +54,7 @@
   <p class="eyebrow">{{ i18n "contact" }}</p>
   <p class="lead">{{ i18n "contact_lead" }}</p>
   <a class="mail" href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
-  <p class="fine"><a href="{{ .Site.Params.github }}">GitHub</a> · © {{ now.Year }} {{ .Site.Title }}</p>
+  <p class="fine"><a href="{{ .Site.Params.github }}">GitHub</a> · <a href="{{ .Site.Params.linkedin }}">LinkedIn</a> · © {{ now.Year }} {{ .Site.Title }}</p>
 </footer>
 <script type="module" src="{{ "js/main.js" | relURL }}"></script>
 </body>

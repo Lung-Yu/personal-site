@@ -15,13 +15,16 @@
   name: ISO 27001:2022 Lead Auditor
   issuer: BSI
   year: 2023
+  url: https://lung-yu.github.io/personal-sites_V2/certificates/iso/ISO_27001_2022_LA.pdf
 
 - id: ceh
   name: CEH
   issuer: EC-Council
   year: 2014
+  url: https://lung-yu.github.io/personal-sites_V2/certificates/ec-council/ECC-CEH-Certificate.pdf
 
 - id: ipas
   name: iPAS 資安工程師（初級）
   issuer: iPAS
   year: 2021
+  url: https://lung-yu.github.io/personal-sites_V2/certificates/ipas/ipas_engineer.pdf

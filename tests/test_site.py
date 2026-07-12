@@ -16,7 +16,9 @@ PUBLIC = ROOT / "public"
 REQUIRED = {
     "certifications": ["id", "name", "issuer", "year"],
     "services": ["id", "title", "description"],
+    "track_record": ["id", "title", "description"],
     "projects": ["id", "title", "description"],
+    "talks": ["id", "title", "event", "year", "link"],
 }
 BILINGUAL = {"title", "description"}
 
