@@ -50,32 +50,43 @@ else if (canvas) {
       return mesh;
     });
 
-    // 在多面體旁標注資安分析標記（hex 位址 / CVE / SHA / CVSS / 二進位），每次載入隨機
+    // 攻擊面標記：在多面體各面上映射不同數值——每個面是一個價值不同的攻擊面，
+    // 隨形狀旋轉只有正對鏡頭的面可見，被遮住的面如同尚未探測的攻擊面（隱晦的暗示）。
     const hx = (n) => Array.from({ length: n }, () => Math.floor(Math.random() * 16).toString(16)).join("").toUpperCase();
-    const radii = [1.7, 1.15, 0.75, 0.9];
-    const tokens = [
-      () => `0x${hx(4)}`,
-      () => `CVE-2026-${1000 + Math.floor(Math.random() * 9000)}`,
-      () => `SHA·${hx(6)}`,
-      () => `CVSS ${(Math.random() * 3.9 + 6).toFixed(1)}`,
-      () => Array.from({ length: 8 }, () => Math.round(Math.random())).join(""),
-    ].sort(() => Math.random() - 0.5);
-    const tags = pieces.map((mesh, i) => {
+    const faceTex = (val) => {
       const cv = document.createElement("canvas");
-      cv.width = 256; cv.height = 64;
+      cv.width = 128; cv.height = 64;
       const ctx = cv.getContext("2d");
-      ctx.font = "600 32px ui-monospace, Menlo, monospace";
-      ctx.fillStyle = "#e8c55c";
-      ctx.textBaseline = "middle";
-      ctx.fillText(tokens[i % tokens.length](), 6, 36);
+      ctx.font = "600 26px ui-monospace, Menlo, monospace";
+      ctx.fillStyle = "rgba(232,197,92,0.5)";
+      ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      ctx.fillText(val, 64, 34);
       const tex = new THREE.CanvasTexture(cv);
-      tex.anisotropy = 4;
-      const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false, opacity: 0.88 }));
-      sp.scale.set(2, 0.5, 1);
-      group.add(sp);
-      const off = radii[i] * 0.7 + 0.4;
-      return { sp, mesh, offset: new THREE.Vector3(off, off, 0) };
-    });
+      tex.anisotropy = 2;
+      return tex;
+    };
+    const Z = new THREE.Vector3(0, 0, 1);
+    const va = new THREE.Vector3(), vb = new THREE.Vector3(), vc = new THREE.Vector3();
+    const cen = new THREE.Vector3(), nrm = new THREE.Vector3(), e1 = new THREE.Vector3(), e2 = new THREE.Vector3();
+    const decorate = (mesh, size, density) => {
+      const p = mesh.geometry.attributes.position;
+      for (let i = 0; i < p.count; i += 3) {
+        if (Math.random() > density) continue; // 只標注部分面，其餘留白更隱晦
+        va.fromBufferAttribute(p, i); vb.fromBufferAttribute(p, i + 1); vc.fromBufferAttribute(p, i + 2);
+        cen.copy(va).add(vb).add(vc).divideScalar(3);
+        nrm.crossVectors(e1.subVectors(vb, va), e2.subVectors(vc, va)).normalize();
+        const val = Math.random() < 0.5 ? hx(2) : String(Math.floor(Math.random() * 90 + 10));
+        const plane = new THREE.Mesh(
+          new THREE.PlaneGeometry(size, size * 0.5),
+          new THREE.MeshBasicMaterial({ map: faceTex(val), transparent: true, depthWrite: false, opacity: 0.65 })
+        );
+        plane.position.copy(cen).addScaledVector(nrm, 0.02);
+        plane.quaternion.setFromUnitVectors(Z, nrm);
+        mesh.add(plane);
+      }
+    };
+    decorate(pieces[0], 0.55, 0.8); // 二十面體：20 面，主要攻擊目標，面向最多元
+    decorate(pieces[1], 0.5, 0.65); // 八面體
 
     // 星塵：稀疏金色粒子營造景深
     const starGeo = new THREE.BufferGeometry();
@@ -142,7 +153,6 @@ else if (canvas) {
         m.rotation.y = t * 0.00012 * (i + 1);
         m.position.y += Math.sin(t * 0.0006 + i * 2) * 0.0015;
       });
-      tags.forEach(({ sp, mesh, offset }) => sp.position.copy(mesh.position).add(offset));
       nodes.forEach((n) => {
         n.position.y = n.userData.base.y + Math.sin(t * 0.0007 + n.userData.phase) * 0.14;
         const pulse = n === target ? 0.5 + (Math.sin(t * 0.005) + 1) * 0.7 : 0.45;
