@@ -50,6 +50,33 @@ else if (canvas) {
       return mesh;
     });
 
+    // 在多面體旁標注資安分析標記（hex 位址 / CVE / SHA / CVSS / 二進位），每次載入隨機
+    const hx = (n) => Array.from({ length: n }, () => Math.floor(Math.random() * 16).toString(16)).join("").toUpperCase();
+    const radii = [1.7, 1.15, 0.75, 0.9];
+    const tokens = [
+      () => `0x${hx(4)}`,
+      () => `CVE-2026-${1000 + Math.floor(Math.random() * 9000)}`,
+      () => `SHA·${hx(6)}`,
+      () => `CVSS ${(Math.random() * 3.9 + 6).toFixed(1)}`,
+      () => Array.from({ length: 8 }, () => Math.round(Math.random())).join(""),
+    ].sort(() => Math.random() - 0.5);
+    const tags = pieces.map((mesh, i) => {
+      const cv = document.createElement("canvas");
+      cv.width = 256; cv.height = 64;
+      const ctx = cv.getContext("2d");
+      ctx.font = "600 32px ui-monospace, Menlo, monospace";
+      ctx.fillStyle = "#e8c55c";
+      ctx.textBaseline = "middle";
+      ctx.fillText(tokens[i % tokens.length](), 6, 36);
+      const tex = new THREE.CanvasTexture(cv);
+      tex.anisotropy = 4;
+      const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false, opacity: 0.88 }));
+      sp.scale.set(2, 0.5, 1);
+      group.add(sp);
+      const off = radii[i] * 0.7 + 0.4;
+      return { sp, mesh, offset: new THREE.Vector3(off, off, 0) };
+    });
+
     // 星塵：稀疏金色粒子營造景深
     const starGeo = new THREE.BufferGeometry();
     const pos = new Float32Array(540);
@@ -115,6 +142,7 @@ else if (canvas) {
         m.rotation.y = t * 0.00012 * (i + 1);
         m.position.y += Math.sin(t * 0.0006 + i * 2) * 0.0015;
       });
+      tags.forEach(({ sp, mesh, offset }) => sp.position.copy(mesh.position).add(offset));
       nodes.forEach((n) => {
         n.position.y = n.userData.base.y + Math.sin(t * 0.0007 + n.userData.phase) * 0.14;
         const pulse = n === target ? 0.5 + (Math.sin(t * 0.005) + 1) * 0.7 : 0.45;
