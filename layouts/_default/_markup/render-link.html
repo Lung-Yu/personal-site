@@ -1,2 +1,6 @@
-{{- $external := strings.HasPrefix .Destination "http" -}}
-<a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $external }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- $dest := .Destination -}}
+{{- $external := strings.HasPrefix $dest "http" -}}
+{{- if and (not $external) (not (strings.HasPrefix $dest "#")) -}}
+{{- $dest = $dest | strings.TrimPrefix "/" | relURL -}}
+{{- end -}}
+<a href="{{ $dest | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $external }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Text | safeHTML }}</a>

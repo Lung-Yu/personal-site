@@ -87,7 +87,11 @@ if PUBLIC.exists():
                 continue
             if ref.startswith("/"):
                 rel = ref.lstrip("/")
-                if BASE_PATH and rel.startswith(BASE_PATH):
+                if BASE_PATH:
+                    # 絕對路徑一定要帶 baseURL 前綴，否則正式環境（子路徑部署）會 404；
+                    # 這通常代表寫死路徑而非用 relURL（例如 markdown 圖片語法）。
+                    if not check(rel == BASE_PATH or rel.startswith(BASE_PATH + "/"), f"{page.relative_to(PUBLIC)} 的絕對路徑 {ref} 缺少 baseURL 前綴 /{BASE_PATH}/，正式環境會 404"):
+                        continue
                     rel = rel[len(BASE_PATH):].lstrip("/")
                 target = PUBLIC / rel if rel else PUBLIC / "index.html"
             else:
