@@ -1,0 +1,4 @@
+Contact: mailto:workfile975@gmail.com
+Expires: 2027-07-12T00:00:00.000Z
+Preferred-Languages: zh-TW, en
+Canonical: https://lung-yu.github.io/personal-site/.well-known/security.txt

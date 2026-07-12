@@ -7,8 +7,12 @@ const io = new IntersectionObserver(
 );
 document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
+// 小螢幕或使用者要求省流量時跳過 3D（省 ~730KB 與 GPU），保留 CSS 漸層背景
+const skip3d = matchMedia("(max-width: 768px)").matches || navigator.connection?.saveData;
+
 const canvas = document.getElementById("hero3d");
-if (canvas) {
+if (canvas && skip3d) canvas.remove();
+else if (canvas) {
   try {
     const THREE = await import("./three.module.min.js");
 

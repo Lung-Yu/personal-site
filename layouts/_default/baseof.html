@@ -8,7 +8,28 @@
 {{- end }}
 <title>{{ .Site.Title }} — {{ i18n "hero_sub" }}</title>
 <meta name="description" content="{{ i18n "meta_desc" }}">
+<link rel="canonical" href="{{ .Permalink }}">
+{{ range .AllTranslations }}<link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
+{{ end }}<link rel="alternate" hreflang="x-default" href="{{ (index .AllTranslations 0).Permalink }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ .Site.Title }} — {{ i18n "job_title" }}">
+<meta property="og:description" content="{{ i18n "meta_desc" }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ "images/og.jpg" | absURL }}">
+<meta property="og:locale" content="{{ replace .Site.Language.Locale "-" "_" }}">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ .Site.Title | jsonify }},
+  "jobTitle": {{ i18n "job_title" | jsonify }},
+  "email": "mailto:{{ .Site.Params.email }}",
+  "url": {{ .Permalink | jsonify }},
+  "sameAs": [{{ .Site.Params.github | jsonify }}]
+}
+</script>
 {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 </head>
