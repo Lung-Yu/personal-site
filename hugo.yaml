@@ -1,0 +1,19 @@
+baseURL: https://lung-yu.github.io/personal-site/
+title: Lung-Yu
+defaultContentLanguage: zh-tw
+
+languages:
+  zh-tw:
+    locale: zh-TW
+    label: 中文
+    weight: 1
+  en:
+    locale: en-US
+    label: EN
+    weight: 2
+
+disableKinds: [taxonomy, term, rss]
+
+params:
+  email: workfile975@gmail.com
+  github: https://github.com/Lung-Yu

@@ -1,0 +1,30 @@
+# 新增專案：year 為數字；tags 選填（不需翻譯的技術詞彙）。
+- id: ssdlc-platform
+  title:
+    zh: SSDLC 學習平台
+    en: SSDLC Learning Platform
+  description:
+    zh: 為企業內訓打造的安全開發生命週期學習平台，涵蓋威脅建模演練與 CI/CD 安全檢測實作。
+    en: A secure development lifecycle learning platform for corporate training, covering threat-modeling exercises and CI/CD security tooling labs.
+  year: 2025
+  tags: [SSDLC, DevSecOps, Training]
+
+- id: threat-board
+  title:
+    zh: 威脅情資儀表板
+    en: Threat Intelligence Board
+  description:
+    zh: 整合多來源威脅情資的視覺化儀表板，協助資安團隊快速掌握攻擊面變化。
+    en: A visualization dashboard aggregating multi-source threat intelligence, helping security teams track attack-surface changes at a glance.
+  year: 2024
+  tags: [Threat Intel, Dashboard]
+
+- id: auto-pentest
+  title:
+    zh: 自動化滲透測試工具鏈
+    en: Automated Pentest Toolchain
+  description:
+    zh: 將例行性滲透測試項目自動化，讓顧問時間集中在真正需要人腦的攻擊路徑分析。
+    en: Automates routine pentest checks so consultant hours go to the attack-path analysis that actually needs a human brain.
+  year: 2023
+  tags: [Pentest, Automation]

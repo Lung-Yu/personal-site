@@ -1,0 +1,57 @@
+{{ define "main" }}
+{{ $l := cond (eq .Site.Language.Lang "en") "en" "zh" }}
+
+<section class="hero">
+  <canvas id="hero3d" aria-hidden="true"></canvas>
+  <div class="hero-copy">
+    <h1>{{ i18n "hero_title" }}</h1>
+    <p class="sub">{{ i18n "hero_sub" }}</p>
+  </div>
+  <a class="scroll-hint" href="#about">{{ i18n "scroll" }} ↓</a>
+</section>
+
+<section id="about" class="reveal">
+  <p class="eyebrow">§01 · {{ i18n "about" }}</p>
+  <div class="prose">{{ .Content }}</div>
+</section>
+
+<section id="certifications" class="reveal">
+  <p class="eyebrow">§02 · {{ i18n "certifications" }}</p>
+  <ul class="certs">
+    {{ range hugo.Data.certifications }}
+    <li class="cert">
+      <span class="cert-name">{{ with .url }}<a href="{{ . }}">{{ end }}{{ .name }}{{ with .url }}</a>{{ end }}</span>
+      <span class="cert-meta">{{ .issuer }} · {{ .year }}</span>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+
+<section id="services" class="reveal">
+  <p class="eyebrow">§03 · {{ i18n "services" }}</p>
+  <ul class="cards">
+    {{ range hugo.Data.services }}
+    <li class="card">
+      <h3>{{ index .title $l }}</h3>
+      <p>{{ index .description $l }}</p>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+
+<section id="projects" class="reveal">
+  <p class="eyebrow">§04 · {{ i18n "projects" }}</p>
+  <ul class="rows">
+    {{ range hugo.Data.projects }}
+    <li class="row">
+      <span class="year">{{ .year }}</span>
+      <div>
+        <h3>{{ index .title $l }}</h3>
+        <p>{{ index .description $l }}</p>
+        {{ with .tags }}<p class="tags">{{ delimit . " / " }}</p>{{ end }}
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

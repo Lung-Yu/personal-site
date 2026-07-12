@@ -1,0 +1,22 @@
+# 新增認證：複製一個條目改內容即可。id 不可重複；url 選填。
+- id: cissp
+  name: CISSP
+  issuer: ISC2
+  year: 2021
+  url: https://www.isc2.org/certifications/cissp
+
+- id: csslp
+  name: CSSLP
+  issuer: ISC2
+  year: 2022
+  url: https://www.isc2.org/certifications/csslp
+
+- id: iso27001-la
+  name: ISO/IEC 27001 Lead Auditor
+  issuer: BSI
+  year: 2023
+
+- id: ceh
+  name: CEH
+  issuer: EC-Council
+  year: 2020

@@ -1,0 +1,18 @@
+# 本地開發：podman-compose up 或 docker compose up → http://localhost:1313
+# 執行測試：podman-compose run --rm test 或 docker compose run --rm test
+services:
+  site:
+    image: docker.io/hugomods/hugo:0.164.0
+    command: server --bind 0.0.0.0 --port 1313 --baseURL http://localhost:1313/
+    ports:
+      - "1313:1313"
+    volumes:
+      - .:/src
+
+  test:
+    image: docker.io/hugomods/hugo:0.164.0
+    entrypoint: /bin/sh
+    command: -c "apk add --no-cache --no-progress -q python3 py3-yaml && hugo --quiet --minify && python3 tests/test_site.py"
+    volumes:
+      - .:/src
+    profiles: [test]

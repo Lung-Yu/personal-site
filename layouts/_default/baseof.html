@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Locale }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{ if ne hugo.Environment "development" -}}
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+{{- end }}
+<title>{{ .Site.Title }} — {{ i18n "hero_sub" }}</title>
+<meta name="description" content="{{ i18n "meta_desc" }}">
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+{{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="{{ "" | relLangURL }}">{{ .Site.Title }}</a>
+  <nav aria-label="main">
+    <a href="#about">{{ i18n "about" }}</a>
+    <a href="#certifications">{{ i18n "certifications" }}</a>
+    <a href="#services">{{ i18n "services" }}</a>
+    <a href="#projects">{{ i18n "projects" }}</a>
+    <a href="#contact">{{ i18n "contact" }}</a>
+    {{ range .Translations }}<a class="lang" href="{{ .RelPermalink }}" hreflang="{{ .Language.Locale }}">{{ .Language.Label }}</a>{{ end }}
+  </nav>
+</header>
+<main>
+{{ block "main" . }}{{ end }}
+</main>
+<footer id="contact" class="reveal">
+  <p class="eyebrow">{{ i18n "contact" }}</p>
+  <p class="lead">{{ i18n "contact_lead" }}</p>
+  <a class="mail" href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
+  <p class="fine"><a href="{{ .Site.Params.github }}">GitHub</a> · © {{ now.Year }} {{ .Site.Title }}</p>
+</footer>
+<script type="module" src="{{ "js/main.js" | relURL }}"></script>
+</body>
+</html>

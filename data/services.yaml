@@ -1,0 +1,32 @@
+# 新增服務：title 與 description 必須同時提供 zh 與 en。
+- id: secure-sdlc
+  title:
+    zh: 安全開發流程導入
+    en: Secure SDLC Adoption
+  description:
+    zh: 將威脅建模、安全需求、程式碼審查與自動化檢測落地到您的開發流程，讓安全成為交付的一部分，而不是上線前的關卡。
+    en: Bring threat modeling, security requirements, code review, and automated checks into your delivery pipeline — security as part of shipping, not a gate before launch.
+
+- id: security-training
+  title:
+    zh: 企業資安教育訓練
+    en: Corporate Security Training
+  description:
+    zh: 為開發與維運團隊量身設計的實戰課程：OWASP Top 10、安全編碼、滲透測試思維，以真實案例演練取代照本宣科。
+    en: Hands-on courses tailored for dev and ops teams — OWASP Top 10, secure coding, and offensive thinking, taught through real cases instead of slides.
+
+- id: project-consulting
+  title:
+    zh: 軟體專案開發顧問
+    en: Software Project Consulting
+  description:
+    zh: 從架構設計、技術選型到交付節奏，以資深開發者視角協助您的專案避開昂貴的彎路。
+    en: Architecture, technology choices, and delivery cadence — a senior engineer's eye to keep your project off the expensive detours.
+
+- id: code-audit
+  title:
+    zh: 程式碼安全審查
+    en: Secure Code Review
+  description:
+    zh: 針對關鍵系統進行深度程式碼審查與弱點分析，交付可執行的修補優先序，而非一份沒人讀的報告。
+    en: Deep code review and vulnerability analysis for critical systems, delivering an actionable fix priority list — not a report nobody reads.
