@@ -105,11 +105,13 @@ else if (canvas) {
       const mat = new THREE.MeshStandardMaterial({ color: 0x0e1730, emissive: 0xc9a227, emissiveIntensity: 0.5, metalness: 0.6, roughness: 0.4 });
       const m = new THREE.Mesh(nodeGeo, mat);
       m.position.set((Math.random() - 0.5) * 6.5, (Math.random() - 0.5) * 5, (Math.random() - 0.5) * 3);
-      // 每個節點是一個資產，帶有點擊後才揭露的隱藏偵察資料
+      // 每個節點是一個資產，但只有少數藏有真正的發現——符合安全探索「多數探測一無所獲」的實況
       m.userData = {
         base: m.position.clone(),
         phase: Math.random() * Math.PI * 2,
         probed: false,
+        finding: false,
+        hasData: false, // 稍後固定挑選 ≤30% 的節點設為有發現
         id: hx(4),
         surface: surfaces[Math.floor(Math.random() * surfaces.length)],
         exposure: 1 + Math.floor(Math.random() * 4), // 1–4
@@ -118,6 +120,9 @@ else if (canvas) {
       graph.add(m);
       return m;
     });
+    // 固定挑選 ≤30% 的節點藏有發現（至少 1 個），其餘點擊皆一無所獲
+    const findingCount = Math.max(1, Math.floor(nodes.length * 0.3));
+    [...nodes].sort(() => Math.random() - 0.5).slice(0, findingCount).forEach((n) => (n.userData.hasData = true));
 
     // 邊：每個節點連到最近的 1～2 個鄰居，形成攻擊路徑
     const edgePairs = [];
@@ -185,9 +190,13 @@ else if (canvas) {
       });
       nodes.forEach((n) => {
         n.position.y = n.userData.base.y + Math.sin(t * 0.0007 + n.userData.phase) * 0.14;
-        const idle = n.userData.probed ? 1.0 : 0.45; // 已探測的節點維持明亮
-        const pulse = n === target ? 0.5 + (Math.sin(t * 0.005) + 1) * 0.7 : idle;
-        const want = n === hover ? 2.4 : pulse;
+        // 未探索=金中亮；已探索有發現=亮金；已探索無發現=冷暗
+        const idle = !n.userData.probed ? 0.45 : n.userData.finding ? 1.0 : 0.12;
+        let want;
+        if (n === hover) want = 2.4;
+        else if (n.userData.probed && !n.userData.finding) want = 0.12; // 清空的維持暗淡
+        else if (n === target) want = 0.5 + (Math.sin(t * 0.005) + 1) * 0.7;
+        else want = idle;
         n.material.emissiveIntensity += (want - n.material.emissiveIntensity) * 0.12;
         const s = n === hover ? 1.7 : n === target ? 1.15 : 1;
         n.scale.setScalar(n.scale.x + (s - n.scale.x) * 0.15);
@@ -221,10 +230,15 @@ else if (canvas) {
       canvas.style.pointerEvents = "auto";
       canvas.addEventListener("click", (e) => {
         const n = pick(e);
-        if (!n) return;
-        target = n;
-        n.userData.probed = true; // 狀態改變：標記為已探測，之後持續發亮
-        showProbe(n.userData);
+        if (!n || n.userData.probed) return;
+        n.userData.probed = true; // 狀態改變：已探測
+        if (n.userData.hasData) {
+          n.userData.finding = true; // 有發現：持續亮金 + 揭露資料
+          target = n;
+          showProbe(n.userData);
+        } else {
+          n.material.emissive.set(0x35507a); // 無發現：轉冷灰、暗淡（已清空）
+        }
       });
       const loop = (t) => {
         if (!document.hidden) render(t);
