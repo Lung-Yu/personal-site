@@ -3,13 +3,21 @@ hero_sub: DevSecOps Engineer · Cybersecurity Expert · Full-Stack Developer
 job_title: DevSecOps Engineer · Cybersecurity Expert & Full-Stack Developer
 meta_desc: DevSecOps engineer and cybersecurity expert with 12+ years of experience — secure development process, AI integration, corporate training, and secure code review.
 about: About
+skills: Skills
 certifications: Certifications
 valid_thru: Valid through
 services: Services
 projects: Selected Projects
 track_record: Track Record
 speaking: Speaking
+posts: Writing
 contact: Contact
 contact_lead: Have a project in mind, or a team that needs training?
 projects_note: Source code for these projects is private; architecture walkthroughs and demos available on request.
 scroll: Scroll to explore
+case_study: |
+  **Three years, from friction to trust.** When financial institutions adopt automated security scanning, the real obstacle is rarely technical — it's trust. Engineering teams fear security gates will slow delivery; security teams fear compromise will buy only the illusion of safety. That's the core argument I made at Digicentre's Hacker Talk ("Building Secure Software Starts with Effective Communication") and DevOpsDays Taipei 2024 ("DevOps + Sec: Strong Support or Troublemakers?").
+
+  For a listed financial institution's black/white-box automated scanning needs, we chose a 3-year phased rollout over a big-bang launch — integrating WebInspect and Fortify SCA into a Jenkins-based distributed scanning architecture, and embedding the approval workflow directly into the existing development process so security checks became part of the delivery cadence, not an extra gate.
+
+  The final milestone — Phase 3, Stage 2 — shipped on schedule in September 2025, closing out the 3-year engagement.

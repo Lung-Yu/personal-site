@@ -6,14 +6,15 @@
 {{ if ne hugo.Environment "development" -}}
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
 {{- end }}
-<title>{{ .Site.Title }} — {{ i18n "hero_sub" }}</title>
-<meta name="description" content="{{ i18n "meta_desc" }}">
+{{ $pageDesc := cond .IsHome (i18n "meta_desc") (.Params.summary | default (i18n "meta_desc")) }}
+<title>{{ if .IsHome }}{{ .Site.Title }} — {{ i18n "hero_sub" }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
+<meta name="description" content="{{ $pageDesc }}">
 <link rel="canonical" href="{{ .Permalink }}">
 {{ range .AllTranslations }}<link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
 {{ end }}<link rel="alternate" hreflang="x-default" href="{{ (index .AllTranslations 0).Permalink }}">
-<meta property="og:type" content="website">
-<meta property="og:title" content="{{ .Site.Title }} — {{ i18n "job_title" }}">
-<meta property="og:description" content="{{ i18n "meta_desc" }}">
+<meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }} — {{ i18n "job_title" }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:description" content="{{ $pageDesc }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:image" content="{{ "images/og.jpg" | absURL }}">
 <meta property="og:locale" content="{{ replace .Site.Language.Locale "-" "_" }}">
@@ -37,13 +38,16 @@
 <header class="nav">
   <a class="brand" href="{{ "" | relLangURL }}">{{ .Site.Title }}</a>
   <nav aria-label="main">
-    <a href="#about">{{ i18n "about" }}</a>
-    <a href="#certifications">{{ i18n "certifications" }}</a>
-    <a href="#services">{{ i18n "services" }}</a>
-    <a href="#track-record">{{ i18n "track_record" }}</a>
-    <a href="#projects">{{ i18n "projects" }}</a>
-    <a href="#speaking">{{ i18n "speaking" }}</a>
-    <a href="#contact">{{ i18n "contact" }}</a>
+    {{ $home := "" | relLangURL }}
+    <a href="{{ $home }}#about">{{ i18n "about" }}</a>
+    <a href="{{ $home }}#skills">{{ i18n "skills" }}</a>
+    <a href="{{ $home }}#certifications">{{ i18n "certifications" }}</a>
+    <a href="{{ $home }}#services">{{ i18n "services" }}</a>
+    <a href="{{ $home }}#track-record">{{ i18n "track_record" }}</a>
+    <a href="{{ $home }}#projects">{{ i18n "projects" }}</a>
+    <a href="{{ $home }}#speaking">{{ i18n "speaking" }}</a>
+    <a href="{{ "posts" | relLangURL }}">{{ i18n "posts" }}</a>
+    <a href="{{ $home }}#contact">{{ i18n "contact" }}</a>
     {{ range .Translations }}<a class="lang" href="{{ .RelPermalink }}" hreflang="{{ .Language.Locale }}">{{ .Language.Label }}</a>{{ end }}
   </nav>
 </header>

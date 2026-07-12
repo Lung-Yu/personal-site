@@ -15,8 +15,20 @@
   <div class="prose">{{ .Content }}</div>
 </section>
 
+<section id="skills" class="reveal">
+  <p class="eyebrow">§02 · {{ i18n "skills" }}</p>
+  {{ range hugo.Data.skills }}
+  <div class="skills-group">
+    <p class="skills-cat">{{ index .category $l }}</p>
+    <div class="skills-tags">
+      {{ range index .items $l }}<span class="skill-tag">{{ . }}</span>{{ end }}
+    </div>
+  </div>
+  {{ end }}
+</section>
+
 <section id="certifications" class="reveal">
-  <p class="eyebrow">§02 · {{ i18n "certifications" }}</p>
+  <p class="eyebrow">§03 · {{ i18n "certifications" }}</p>
   <ul class="certs">
     {{ range hugo.Data.certifications }}
     <li class="cert">
@@ -28,7 +40,7 @@
 </section>
 
 <section id="services" class="reveal">
-  <p class="eyebrow">§03 · {{ i18n "services" }}</p>
+  <p class="eyebrow">§04 · {{ i18n "services" }}</p>
   <ul class="cards">
     {{ range hugo.Data.services }}
     <li class="card">
@@ -40,7 +52,8 @@
 </section>
 
 <section id="track-record" class="reveal">
-  <p class="eyebrow">§04 · {{ i18n "track_record" }}</p>
+  <p class="eyebrow">§05 · {{ i18n "track_record" }}</p>
+  <div class="prose case-study">{{ i18n "case_study" | markdownify }}</div>
   <ul class="cards">
     {{ range hugo.Data.track_record }}
     <li class="card">
@@ -52,7 +65,7 @@
 </section>
 
 <section id="projects" class="reveal">
-  <p class="eyebrow">§05 · {{ i18n "projects" }}</p>
+  <p class="eyebrow">§06 · {{ i18n "projects" }}</p>
   <ul class="rows">
     {{ range hugo.Data.projects }}
     <li class="row">
@@ -69,7 +82,7 @@
 </section>
 
 <section id="speaking" class="reveal">
-  <p class="eyebrow">§06 · {{ i18n "speaking" }}</p>
+  <p class="eyebrow">§07 · {{ i18n "speaking" }}</p>
   <ul class="rows">
     {{ range hugo.Data.talks }}
     <li class="row">

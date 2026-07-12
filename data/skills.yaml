@@ -1,0 +1,114 @@
+# 技術能力分類：新增分類複製格式即可。category/items 需中英雙語，items 為陣列。
+- id: security
+  category:
+    zh: 資訊安全
+    en: Security
+  items:
+    zh:
+      - 資安架構與治理
+      - SAST / DAST / SCA（Fortify · WebInspect · Snyk · SonarQube）
+      - 弱點管理與風險評估
+      - 應用程式安全測試與碼審
+      - 滲透測試（CEH）
+      - ISO 27001:2022 主導稽核員
+      - ISMS 政策與合規
+      - 事件應變與威脅分析
+      - SBOM（CycloneDX · SPDX）
+    en:
+      - Security Architecture & Governance
+      - SAST / DAST / SCA (Fortify · WebInspect · Snyk · SonarQube)
+      - Vulnerability Management & Risk Assessment
+      - Application Security Testing & Code Review
+      - Penetration Testing (CEH)
+      - ISO 27001:2022 Lead Auditor
+      - ISMS Policy & Compliance
+      - Incident Response & Threat Analysis
+      - SBOM (CycloneDX · SPDX)
+
+- id: ai-ml
+  category:
+    zh: AI / 機器學習
+    en: AI / ML
+  items:
+    zh:
+      - RAG 系統與 LLM 整合
+      - Google Gemini · Vertex AI · pgvector
+      - Prompt 工程與 AI 工作流程自動化
+      - 機器學習與深度學習
+      - 影像處理與電腦視覺
+      - 音訊訊號處理
+      - AI 驅動資安工具開發
+    en:
+      - RAG Systems & LLM Integration
+      - Google Gemini · Vertex AI · pgvector
+      - Prompt Engineering & AI Workflow Automation
+      - Machine Learning & Deep Learning
+      - Image Processing & Computer Vision
+      - Audio Signal Processing
+      - AI-powered Security Tooling
+
+- id: fullstack
+  category:
+    zh: 全端開發
+    en: Full-Stack Development
+  items:
+    zh:
+      - Java · Spring Boot（Hexagonal Architecture · CQRS · Event Sourcing）
+      - Python · FastAPI
+      - C# · .NET 8 · EF Core
+      - TypeScript · React · Vite
+      - Flutter
+      - gRPC · 微服務 · RESTful API 設計
+      - Chrome 擴充功能開發
+    en:
+      - Java · Spring Boot (Hexagonal Architecture · CQRS · Event Sourcing)
+      - Python · FastAPI
+      - C# · .NET 8 · EF Core
+      - TypeScript · React · Vite
+      - Flutter
+      - gRPC · Microservices · RESTful API Design
+      - Chrome Extension Development
+
+- id: devsecops-cloud
+  category:
+    zh: DevSecOps 與雲端基礎設施
+    en: DevSecOps & Cloud
+  items:
+    zh:
+      - DevSecOps 流程設計與落地
+      - Terraform IaC
+      - GCP（Cloud Run · GKE · Cloud Build · Artifact Registry）
+      - Docker · Kubernetes · ArgoCD · KrakenD
+      - GitLab CI · Jenkins · GitHub Actions
+      - Kafka · KEDA · OpenTelemetry
+      - Keycloak OAuth2 · Sealed Secrets
+      - CI/CD 安全關卡整合
+    en:
+      - DevSecOps Process Design & Implementation
+      - Terraform IaC
+      - GCP (Cloud Run · GKE · Cloud Build · Artifact Registry)
+      - Docker · Kubernetes · ArgoCD · KrakenD
+      - GitLab CI · Jenkins · GitHub Actions
+      - Kafka · KEDA · OpenTelemetry
+      - Keycloak OAuth2 · Sealed Secrets
+      - CI/CD Security Gate Integration
+
+- id: training-leadership
+  category:
+    zh: 培訓與技術領導
+    en: Training & Leadership
+  items:
+    zh:
+      - 技術團隊領導（2~5 人）
+      - DevSecOps 課程設計與講授
+      - 安全編碼培訓
+      - 架構審查與標準制定
+      - 輔導與技術傳承
+      - 技術演講（DevOpsDays · CyberRes · CISA · HWDC）
+    en:
+      - Technical Team Leadership (2–5 engineers)
+      - DevSecOps Curriculum Design & Delivery
+      - Secure Coding Training
+      - Architecture Review & Standards Setting
+      - Mentoring & Technical Knowledge Transfer
+      - Public Speaking (DevOpsDays · CyberRes · CISA · HWDC)

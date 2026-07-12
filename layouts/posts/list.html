@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="reveal">
+  <p class="eyebrow">{{ i18n "posts" }}</p>
+  <ul class="rows">
+    {{ range .Pages.ByDate.Reverse }}
+    <li class="row">
+      <span class="year">{{ .Date.Format "2006" }}</span>
+      <div>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

@@ -19,12 +19,13 @@ BASE_PATH = urlparse(yaml.safe_load((ROOT / "hugo.yaml").read_text())["baseURL"]
 # 各資料檔的必要欄位；BILINGUAL 欄位須為 {zh: ..., en: ...} 且兩者皆非空
 REQUIRED = {
     "certifications": ["id", "name", "issuer", "year"],
+    "skills": ["id", "category", "items"],
     "services": ["id", "title", "description"],
     "track_record": ["id", "title", "description"],
     "projects": ["id", "title", "description"],
     "talks": ["id", "title", "event", "year", "link"],
 }
-BILINGUAL = {"title", "description"}
+BILINGUAL = {"title", "description", "category", "items"}
 
 failures = []
 
@@ -65,8 +66,16 @@ for lang, page in [("zh", PUBLIC / "index.html"), ("en", PUBLIC / "en" / "index.
     html = page.read_text()
     for name, items in entries.items():
         for item in items:
-            probe = item.get("name") or item["title"][lang]
+            label_field = item.get("title") or item.get("category")
+            probe = item.get("name") or label_field[lang]
             check(probe in html, f"{lang} 頁面缺少 {name}/{item['id']}")
+
+# 2b. 文章頁面雙語建置正確性：每篇文章的 zh/en 版都要產出
+posts_dir = ROOT / "content" / "posts"
+post_slugs = sorted({p.stem.removesuffix(".en") for p in posts_dir.glob("*.md") if p.stem != "_index" and not p.stem.startswith("_index.")})
+for slug in post_slugs:
+    check((PUBLIC / "posts" / slug / "index.html").exists(), f"未產出 zh 文章 posts/{slug}")
+    check((PUBLIC / "en" / "posts" / slug / "index.html").exists(), f"未產出 en 文章 posts/{slug}")
 
 # 3. 本地資源有效性：頁面引用的站內資源都存在於產出
 if PUBLIC.exists():

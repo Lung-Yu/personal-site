@@ -3,13 +3,21 @@ hero_sub: DevSecOps 工程師・資安專家・全端開發
 job_title: DevSecOps 工程師 · 資安專家與全端開發者
 meta_desc: DevSecOps 工程師與資安專家——12 年以上經驗，專注安全開發流程、AI 應用整合、企業教育訓練與程式碼安全審查。
 about: 關於我
+skills: 技術能力
 certifications: 專業認證
 valid_thru: 續證至
 services: 服務項目
 projects: 精選專案
 track_record: 服務實績
 speaking: 講者紀錄
+posts: 文章
 contact: 聯絡
 contact_lead: 有專案想談，或想為團隊安排一場訓練？
 projects_note: 以上專案原始碼未公開，架構細節與展示可於面談時提供。
 scroll: 往下探索
+case_study: |
+  **從對立到協作的三年**——金融機構導入自動化安全掃描時，最大的阻力往往不是技術，而是信任：工程團隊擔心安全關卡拖慢交付，資安團隊擔心妥協換來假象的安全感。這正是我在果核數位 Hacker Talk〈建構安全軟體從有效溝通開始〉與 DevOpsDays Taipei 2024〈DevOps + Sec：強力後盾還是麻煩製造者？〉分享的核心命題。
+
+  面對一家金融上市機構的黑白箱自動化掃描需求，我們沒有選擇一次性上線，而是以三年漸進式導入取代——整合 WebInspect 與 Fortify SCA 進 Jenkins 分散掃描架構，並將簽核流程直接嵌入既有開發工作流，讓安全檢查成為交付節奏的一部分，而不是額外關卡。
+
+  2025 年 9 月，第三階段（第二期）如期完成，是這場三年合作的最終里程碑。
