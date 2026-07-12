@@ -14,7 +14,10 @@ speaking: Speaking
 posts: Writing
 contact: Contact
 contact_lead: Have a project in mind, or a team that needs training?
+contact_hint: It helps to include the project type, team size, and rough timeline when you reach out.
 projects_note: Source code for these projects is private; architecture walkthroughs and demos available on request.
+services_fit: Best suited for teams building or maturing a secure development process — small-to-mid engineering teams adopting DevSecOps without a dedicated security lead, fintech organisations working through compliance requirements, and teams bringing AI into their workflow who are wary of the security implications.
+cta_track_record: Facing something similar?
 scroll: Scroll to explore
 case_study: |
   **Three years, from friction to trust.** When financial institutions adopt automated security scanning, the real obstacle is rarely technical — it's trust. Engineering teams fear security gates will slow delivery; security teams fear compromise will buy only the illusion of safety. That's the core argument I made at Digicentre's Hacker Talk ("Building Secure Software Starts with Effective Communication") and DevOpsDays Taipei 2024 ("DevOps + Sec: Strong Support or Troublemakers?").

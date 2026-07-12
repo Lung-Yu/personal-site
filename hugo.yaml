@@ -12,9 +12,16 @@ languages:
     label: EN
     weight: 2
 
-disableKinds: [taxonomy, term, rss]
+disableKinds: [taxonomy, term]
+
+outputs:
+  home: [html, rss]
+  section: [html, rss]
 
 params:
   email: workfile975@gmail.com
   github: https://github.com/Lung-Yu
   linkedin: https://www.linkedin.com/in/lung-yu-tsai-633865100
+  # Cloudflare Web Analytics token — 到 https://dash.cloudflare.com 建立站台後取得，
+  # 留空則樣板不會輸出任何第三方 script，不影響零外部請求的預設狀態。
+  cloudflare_beacon_token: ""

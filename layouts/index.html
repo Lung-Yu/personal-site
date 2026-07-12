@@ -60,6 +60,7 @@
 
 <section id="services" class="reveal">
   <p class="eyebrow">§04 · {{ i18n "services" }}</p>
+  <p class="services-fit">{{ i18n "services_fit" }}</p>
   <ul class="cards">
     {{ range hugo.Data.services }}
     <li class="card">
@@ -81,6 +82,7 @@
     </li>
     {{ end }}
   </ul>
+  <p class="note"><a href="#contact">{{ i18n "cta_track_record" }} →</a></p>
 </section>
 
 <section id="projects" class="reveal">

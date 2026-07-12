@@ -183,6 +183,7 @@ h3 { font-family: var(--serif); font-weight: 500; color: var(--paper); font-size
 .prose p + p { margin-top: 1.2rem; }
 .prose strong { color: var(--gold-2); font-weight: 600; }
 .case-study { margin-bottom: 2.6rem; padding-bottom: 2.6rem; border-bottom: 1px solid var(--hairline); }
+.services-fit { font-size: 1rem; color: var(--fog); max-width: 62ch; margin-bottom: 2.2rem; }
 
 /* ---- posts ---- */
 .post h1 {
@@ -315,6 +316,7 @@ footer .mail {
   padding-bottom: 0.3rem;
 }
 footer .mail:hover { color: var(--paper); border-color: var(--gold); }
+footer .contact-hint { margin-top: 1rem; font-size: 0.82rem; color: var(--fog); opacity: 0.8; max-width: 42ch; }
 footer .fine { margin-top: 3rem; font-size: 0.8rem; opacity: 0.7; }
 footer .fine .icon { width: 0.85em; height: 0.85em; vertical-align: -0.1em; margin-right: 0.3em; }
 
