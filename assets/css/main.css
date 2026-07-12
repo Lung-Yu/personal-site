@@ -95,6 +95,53 @@ a:hover { color: var(--paper); }
   letter-spacing: 0.22em;
   color: var(--gold);
 }
+.probe {
+  position: absolute;
+  top: clamp(5rem, 12vh, 8rem);
+  right: clamp(1.5rem, 6vw, 5rem);
+  z-index: 2;
+  min-width: 12rem;
+  padding: 1rem 1.2rem;
+  background: rgba(11, 17, 32, 0.55);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--gold);
+  backdrop-filter: blur(6px);
+  font-family: var(--mono);
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+.probe.in {
+  animation: probe-in 0.5s ease forwards;
+}
+@keyframes probe-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+.probe-hd {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  margin-bottom: 0.7rem;
+}
+.probe dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35rem 1rem;
+  margin: 0;
+}
+.probe dt { font-size: 0.62rem; letter-spacing: 0.15em; color: var(--fog); opacity: 0.7; }
+.probe dd { margin: 0; font-size: 0.78rem; color: var(--paper); text-align: right; }
+.probe dd[data-k="exposure"] { color: var(--gold-2); letter-spacing: 0.1em; }
+
+@media (prefers-reduced-motion: reduce) {
+  .probe.in { animation: none; opacity: 1; transform: none; }
+}
+
+@media (max-width: 640px) {
+  .probe { top: 4.5rem; right: 1rem; min-width: 9.5rem; padding: 0.8rem 0.9rem; }
+}
+
 .scroll-hint {
   position: absolute;
   bottom: 2rem;

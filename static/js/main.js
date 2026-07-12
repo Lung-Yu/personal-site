@@ -100,11 +100,21 @@ else if (canvas) {
     const graph = new THREE.Group();
     graph.position.set(-1.6, -0.4, -0.5);
     const nodeGeo = new THREE.SphereGeometry(0.13, 16, 16);
+    const surfaces = ["auth", "api", "session", "crypto", "input", "kernel", "network", "storage", "iam", "supply-chain"];
     const nodes = Array.from({ length: 6 + Math.floor(Math.random() * 4) }, () => {
       const mat = new THREE.MeshStandardMaterial({ color: 0x0e1730, emissive: 0xc9a227, emissiveIntensity: 0.5, metalness: 0.6, roughness: 0.4 });
       const m = new THREE.Mesh(nodeGeo, mat);
       m.position.set((Math.random() - 0.5) * 6.5, (Math.random() - 0.5) * 5, (Math.random() - 0.5) * 3);
-      m.userData = { base: m.position.clone(), phase: Math.random() * Math.PI * 2 };
+      // 每個節點是一個資產，帶有點擊後才揭露的隱藏偵察資料
+      m.userData = {
+        base: m.position.clone(),
+        phase: Math.random() * Math.PI * 2,
+        probed: false,
+        id: hx(4),
+        surface: surfaces[Math.floor(Math.random() * surfaces.length)],
+        exposure: 1 + Math.floor(Math.random() * 4), // 1–4
+        value: Math.floor(Math.random() * 90 + 10),
+      };
       graph.add(m);
       return m;
     });
@@ -135,6 +145,26 @@ else if (canvas) {
     let target = nodes[Math.floor(Math.random() * nodes.length)]; // 脈動的「目標」節點
     let hover = null;
 
+    // 偵察讀出面板：點擊節點後揭露該資產的攻擊面資料。
+    const probe = document.createElement("aside");
+    probe.className = "probe";
+    probe.setAttribute("aria-hidden", "true");
+    probe.innerHTML =
+      '<p class="probe-hd">RECON</p>' +
+      '<dl><dt>NODE</dt><dd data-k="id"></dd>' +
+      '<dt>SURFACE</dt><dd data-k="surface"></dd>' +
+      '<dt>EXPOSURE</dt><dd data-k="exposure"></dd>' +
+      '<dt>VALUE</dt><dd data-k="value"></dd></dl>';
+    canvas.parentElement.appendChild(probe);
+    const showProbe = (d) => {
+      probe.querySelector('[data-k="id"]').textContent = "0x" + d.id;
+      probe.querySelector('[data-k="surface"]').textContent = d.surface;
+      probe.querySelector('[data-k="exposure"]').textContent = "●".repeat(d.exposure) + "○".repeat(4 - d.exposure);
+      probe.querySelector('[data-k="value"]').textContent = d.value;
+      probe.classList.remove("in"); void probe.offsetWidth; // 重觸發淡入動畫
+      probe.classList.add("in");
+    };
+
     scene.add(group);
 
     const resize = () => {
@@ -155,7 +185,8 @@ else if (canvas) {
       });
       nodes.forEach((n) => {
         n.position.y = n.userData.base.y + Math.sin(t * 0.0007 + n.userData.phase) * 0.14;
-        const pulse = n === target ? 0.5 + (Math.sin(t * 0.005) + 1) * 0.7 : 0.45;
+        const idle = n.userData.probed ? 1.0 : 0.45; // 已探測的節點維持明亮
+        const pulse = n === target ? 0.5 + (Math.sin(t * 0.005) + 1) * 0.7 : idle;
         const want = n === hover ? 2.4 : pulse;
         n.material.emissiveIntensity += (want - n.material.emissiveIntensity) * 0.12;
         const s = n === hover ? 1.7 : n === target ? 1.15 : 1;
@@ -190,7 +221,10 @@ else if (canvas) {
       canvas.style.pointerEvents = "auto";
       canvas.addEventListener("click", (e) => {
         const n = pick(e);
-        if (n) target = n;
+        if (!n) return;
+        target = n;
+        n.userData.probed = true; // 狀態改變：標記為已探測，之後持續發亮
+        showProbe(n.userData);
       });
       const loop = (t) => {
         if (!document.hidden) render(t);
