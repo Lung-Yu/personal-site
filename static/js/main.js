@@ -57,6 +57,46 @@ else if (canvas) {
     starGeo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
     scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0xc9a227, size: 0.035, transparent: true, opacity: 0.55 })));
 
+    // 威脅圖 / 攻擊圖：節點與邊——資安思維的視覺語言。
+    // 每次載入節點數、佈局、連線與「目標節點」皆隨機，故每次觀看都略有不同。
+    const graph = new THREE.Group();
+    graph.position.set(-1.6, -0.4, -0.5);
+    const nodeGeo = new THREE.SphereGeometry(0.13, 16, 16);
+    const nodes = Array.from({ length: 6 + Math.floor(Math.random() * 4) }, () => {
+      const mat = new THREE.MeshStandardMaterial({ color: 0x0e1730, emissive: 0xc9a227, emissiveIntensity: 0.5, metalness: 0.6, roughness: 0.4 });
+      const m = new THREE.Mesh(nodeGeo, mat);
+      m.position.set((Math.random() - 0.5) * 6.5, (Math.random() - 0.5) * 5, (Math.random() - 0.5) * 3);
+      m.userData = { base: m.position.clone(), phase: Math.random() * Math.PI * 2 };
+      graph.add(m);
+      return m;
+    });
+
+    // 邊：每個節點連到最近的 1～2 個鄰居，形成攻擊路徑
+    const edgePairs = [];
+    nodes.forEach((n, i) => {
+      const near = nodes.map((o, j) => ({ j, d: n.position.distanceTo(o.position) })).filter((o) => o.j !== i).sort((a, b) => a.d - b.d);
+      for (let e = 0, k = 1 + Math.floor(Math.random() * 2); e < k; e++) {
+        const j = near[e].j;
+        if (!edgePairs.some(([a, b]) => (a === i || a === j) && (b === i || b === j))) edgePairs.push([i, j]);
+      }
+    });
+    const edgeGeo = new THREE.BufferGeometry();
+    const edgePos = new Float32Array(edgePairs.length * 6);
+    edgeGeo.setAttribute("position", new THREE.BufferAttribute(edgePos, 3));
+    const updateEdges = () => {
+      edgePairs.forEach(([a, b], i) => {
+        nodes[a].position.toArray(edgePos, i * 6);
+        nodes[b].position.toArray(edgePos, i * 6 + 3);
+      });
+      edgeGeo.attributes.position.needsUpdate = true;
+    };
+    const edgeLines = new THREE.LineSegments(edgeGeo, new THREE.LineBasicMaterial({ color: 0xc9a227, transparent: true, opacity: 0.3 }));
+    graph.add(edgeLines);
+    scene.add(graph);
+
+    let target = nodes[Math.floor(Math.random() * nodes.length)]; // 脈動的「目標」節點
+    let hover = null;
+
     scene.add(group);
 
     const resize = () => {
@@ -75,6 +115,18 @@ else if (canvas) {
         m.rotation.y = t * 0.00012 * (i + 1);
         m.position.y += Math.sin(t * 0.0006 + i * 2) * 0.0015;
       });
+      nodes.forEach((n) => {
+        n.position.y = n.userData.base.y + Math.sin(t * 0.0007 + n.userData.phase) * 0.14;
+        const pulse = n === target ? 0.5 + (Math.sin(t * 0.005) + 1) * 0.7 : 0.45;
+        const want = n === hover ? 2.4 : pulse;
+        n.material.emissiveIntensity += (want - n.material.emissiveIntensity) * 0.12;
+        const s = n === hover ? 1.7 : n === target ? 1.15 : 1;
+        n.scale.setScalar(n.scale.x + (s - n.scale.x) * 0.15);
+      });
+      updateEdges();
+      edgeLines.material.opacity = 0.22 + (Math.sin(t * 0.001) + 1) * 0.09;
+      graph.rotation.y += (mx * 0.22 - graph.rotation.y) * 0.04;
+      graph.rotation.x += (my * 0.14 - graph.rotation.x) * 0.04;
       group.rotation.x += (my * 0.12 - group.rotation.x) * 0.05;
       group.rotation.y += (mx * 0.18 - group.rotation.y) * 0.05;
       renderer.render(scene, camera);
@@ -83,9 +135,24 @@ else if (canvas) {
     if (reduced) {
       render(0); // 靜態單幀
     } else {
+      // 互動：滑鼠指到節點會發亮，點擊則把它設為新的脈動「目標」（如在攻擊圖上標記突破點）
+      const raycaster = new THREE.Raycaster();
+      const ndc = new THREE.Vector2();
+      const pick = (e) => {
+        ndc.set((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
+        raycaster.setFromCamera(ndc, camera);
+        return raycaster.intersectObjects(nodes)[0]?.object ?? null;
+      };
       addEventListener("pointermove", (e) => {
         mx = (e.clientX / innerWidth) * 2 - 1;
         my = (e.clientY / innerHeight) * 2 - 1;
+        hover = pick(e);
+        canvas.style.cursor = hover ? "pointer" : "";
+      });
+      canvas.style.pointerEvents = "auto";
+      canvas.addEventListener("click", (e) => {
+        const n = pick(e);
+        if (n) target = n;
       });
       const loop = (t) => {
         if (!document.hidden) render(t);
