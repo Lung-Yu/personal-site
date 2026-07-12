@@ -1,32 +1,40 @@
 # 新增服務：title 與 description 必須同時提供 zh 與 en。
-- id: secure-sdlc
+- id: secure-dev-process
   title:
-    zh: 安全開發流程導入
-    en: Secure SDLC Adoption
+    zh: 安全開發流程規劃
+    en: Secure Development Process Planning
   description:
-    zh: 將威脅建模、安全需求、程式碼審查與自動化檢測落地到您的開發流程，讓安全成為交付的一部分，而不是上線前的關卡。
-    en: Bring threat modeling, security requirements, code review, and automated checks into your delivery pipeline — security as part of shipping, not a gate before launch.
+    zh: 為您的開發團隊量身規劃 DevSecOps 實踐，整合 CI/CD 安全關卡、SAST/DAST 工具及安全編碼規範。
+    en: Design and implement DevSecOps practices tailored for your team — integrating security gates into CI/CD, SAST/DAST tooling, and secure coding guidelines.
 
-- id: security-training
+- id: ai-coding-consulting
   title:
-    zh: 企業資安教育訓練
-    en: Corporate Security Training
+    zh: AI Coding 顧問
+    en: AI Coding Consulting
   description:
-    zh: 為開發與維運團隊量身設計的實戰課程：OWASP Top 10、安全編碼、滲透測試思維，以真實案例演練取代照本宣科。
-    en: Hands-on courses tailored for dev and ops teams — OWASP Top 10, secure coding, and offensive thinking, taught through real cases instead of slides.
+    zh: 協助打造 AI 應用程式的實戰顧問——RAG 流水線建置、LLM 整合、Prompt 工程及 AI 輔助開發流程。
+    en: Hands-on guidance for building AI-powered applications — RAG pipelines, LLM integration, prompt engineering, and AI-assisted development workflows.
 
-- id: project-consulting
+- id: corporate-training
   title:
-    zh: 軟體專案開發顧問
-    en: Software Project Consulting
+    zh: 企業內訓／工作坊
+    en: Corporate Training & Workshops
   description:
-    zh: 從架構設計、技術選型到交付節奏，以資深開發者視角協助您的專案避開昂貴的彎路。
-    en: Architecture, technology choices, and delivery cadence — a senior engineer's eye to keep your project off the expensive detours.
+    zh: 針對工程團隊量身設計 DevSecOps、資安及 AI 整合訓練課程，可依需求提供工作坊、演講或多堂系列課程。
+    en: Custom training programmes on DevSecOps, cybersecurity, and AI integration — delivered as workshops, lectures, or multi-session courses for engineering teams.
 
-- id: code-audit
+- id: security-code-review
   title:
-    zh: 程式碼安全審查
-    en: Secure Code Review
+    zh: Code Review（資安導向）
+    en: Security-Focused Code Review
   description:
-    zh: 針對關鍵系統進行深度程式碼審查與弱點分析，交付可執行的修補優先序，而非一份沒人讀的報告。
-    en: Deep code review and vulnerability analysis for critical systems, delivering an actionable fix priority list — not a report nobody reads.
+    zh: 深入檢視程式碼中的安全漏洞、注入風險、認證缺陷及不安全的相依套件，提供具體修補建議。
+    en: In-depth code review identifying security vulnerabilities, injection risks, authentication flaws, and insecure dependencies — with actionable remediation recommendations.
+
+- id: security-health-check
+  title:
+    zh: 資安健診
+    en: Security Health Check
+  description:
+    zh: 適合新創與中小企業的輕量資安評估——審視架構、存取控管與主要風險，快速掌握資安現況。
+    en: A lightweight security assessment for startups and SMBs — reviewing architecture, access controls, and key risks to give you a clear security posture snapshot.

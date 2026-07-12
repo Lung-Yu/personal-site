@@ -1,14 +1,7 @@
 ---
-title: Lung-Yu
+title: Lung-Yu Tsai
 ---
 
-I'm an engineer and consultant focused on **secure software development**.
-Holding CISSP, CSSLP, and other international certifications, I've spent years
-helping companies turn security from a pre-launch checklist into part of how
-they build — adopting SSDLC, growing a threat-modeling culture, and training
-teams to write code that survives an attacker's attention.
+I'm Lung-Yu Tsai, a **cybersecurity expert and full-stack developer** with 12+ years of experience, currently Technical Manager at Cloudforce. I focus on weaving security into every stage of the development process — from architecture design and DevSecOps adoption to AI integration — to build safer, more resilient systems.
 
-I also work as a project consultant and instructor: I've taught courses,
-reviewed architectures, and shipped products with my own hands. More than
-delivering a heavy report, what I care about is this — three months from now,
-your team shouldn't need me anymore.
+Certified CISSP, CSSLP, ISO 27001 Lead Auditor, and CEH. I've spoken at DevOpsDays Taipei, CyberRes, CISA, and HWDC, and teach DevSecOps as a part-time instructor.
