@@ -184,6 +184,15 @@ ul.certs, ul.cards, ul.rows { list-style: none; padding: 0; }
 .row p { margin-top: 0.4rem; font-size: 0.95rem; max-width: 62ch; }
 .row .tags { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; color: var(--fog); opacity: 0.75; }
 
+.note {
+  margin-top: 1.6rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--fog);
+  opacity: 0.75;
+}
+
 /* ---- footer ---- */
 footer { padding-bottom: 5rem; }
 footer .lead { font-family: var(--serif); font-size: clamp(1.4rem, 3vw, 2rem); color: var(--paper); max-width: 30ch; }

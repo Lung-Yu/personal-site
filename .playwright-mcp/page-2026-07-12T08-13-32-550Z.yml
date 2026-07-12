@@ -1,0 +1,94 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "Lung-Yu" [ref=e3] [cursor=pointer]:
+      - /url: /personal-site/
+    - navigation "main" [ref=e4]:
+      - link "關於我" [ref=e5] [cursor=pointer]:
+        - /url: "#about"
+      - link "專業認證" [ref=e6] [cursor=pointer]:
+        - /url: "#certifications"
+      - link "服務項目" [ref=e7] [cursor=pointer]:
+        - /url: "#services"
+      - link "精選專案" [ref=e8] [cursor=pointer]:
+        - /url: "#projects"
+      - link "聯絡" [ref=e9] [cursor=pointer]:
+        - /url: "#contact"
+      - link "EN" [ref=e10] [cursor=pointer]:
+        - /url: /personal-site/en/
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - generic [ref=e14]:
+        - heading "安全，是一場先手棋。" [level=1] [ref=e15]
+        - paragraph [ref=e16]: 安全軟體開發・顧問服務・教育訓練
+      - link "往下探索 ↓" [ref=e17] [cursor=pointer]:
+        - /url: "#about"
+    - generic [ref=e18]:
+      - paragraph [ref=e19]: §01 · 關於我
+      - generic [ref=e20]:
+        - paragraph [ref=e21]:
+          - text: 我是一名專注於
+          - strong [ref=e22]: 安全軟體開發
+          - text: 的工程師與顧問。持有 CISSP、CSSLP 等多張國際認證， 多年來協助企業把安全從「上線前的檢查表」變成「開發流程的一部分」—— 導入 SSDLC、建立威脅建模文化、訓練開發團隊寫出經得起攻擊的程式碼。
+        - paragraph [ref=e23]: 我同時具備專案開發顧問與教學經驗：帶過課程、審過架構、也親手寫過產品。 比起交付一份厚重的報告，我更在意的是——三個月後，你的團隊是否已經不需要我。
+    - generic [ref=e24]:
+      - paragraph [ref=e25]: §02 · 專業認證
+      - list [ref=e26]:
+        - listitem [ref=e27]:
+          - link "CISSP" [ref=e29] [cursor=pointer]:
+            - /url: https://www.isc2.org/certifications/cissp
+          - generic [ref=e30]: ISC2 · 2021
+        - listitem [ref=e31]:
+          - link "CSSLP" [ref=e33] [cursor=pointer]:
+            - /url: https://www.isc2.org/certifications/csslp
+          - generic [ref=e34]: ISC2 · 2022
+        - listitem [ref=e35]:
+          - generic [ref=e36]: ISO/IEC 27001 Lead Auditor
+          - generic [ref=e37]: BSI · 2023
+        - listitem [ref=e38]:
+          - generic [ref=e39]: CEH
+          - generic [ref=e40]: EC-Council · 2020
+    - generic [ref=e41]:
+      - paragraph [ref=e42]: §03 · 服務項目
+      - list [ref=e43]:
+        - listitem [ref=e44]:
+          - heading "安全開發流程導入" [level=3] [ref=e45]
+          - paragraph [ref=e46]: 將威脅建模、安全需求、程式碼審查與自動化檢測落地到您的開發流程，讓安全成為交付的一部分，而不是上線前的關卡。
+        - listitem [ref=e47]:
+          - heading "企業資安教育訓練" [level=3] [ref=e48]
+          - paragraph [ref=e49]: 為開發與維運團隊量身設計的實戰課程：OWASP Top 10、安全編碼、滲透測試思維，以真實案例演練取代照本宣科。
+        - listitem [ref=e50]:
+          - heading "軟體專案開發顧問" [level=3] [ref=e51]
+          - paragraph [ref=e52]: 從架構設計、技術選型到交付節奏，以資深開發者視角協助您的專案避開昂貴的彎路。
+        - listitem [ref=e53]:
+          - heading "程式碼安全審查" [level=3] [ref=e54]
+          - paragraph [ref=e55]: 針對關鍵系統進行深度程式碼審查與弱點分析，交付可執行的修補優先序，而非一份沒人讀的報告。
+    - generic [ref=e56]:
+      - paragraph [ref=e57]: §04 · 精選專案
+      - list [ref=e58]:
+        - listitem [ref=e59]:
+          - generic [ref=e60]: "2025"
+          - generic [ref=e61]:
+            - heading "SSDLC 學習平台" [level=3] [ref=e62]
+            - paragraph [ref=e63]: 為企業內訓打造的安全開發生命週期學習平台，涵蓋威脅建模演練與 CI/CD 安全檢測實作。
+            - paragraph [ref=e64]: SSDLC / DevSecOps / Training
+        - listitem [ref=e65]:
+          - generic [ref=e66]: "2024"
+          - generic [ref=e67]:
+            - heading "威脅情資儀表板" [level=3] [ref=e68]
+            - paragraph [ref=e69]: 整合多來源威脅情資的視覺化儀表板，協助資安團隊快速掌握攻擊面變化。
+            - paragraph [ref=e70]: Threat Intel / Dashboard
+        - listitem [ref=e71]:
+          - generic [ref=e72]: "2023"
+          - generic [ref=e73]:
+            - heading "自動化滲透測試工具鏈" [level=3] [ref=e74]
+            - paragraph [ref=e75]: 將例行性滲透測試項目自動化，讓顧問時間集中在真正需要人腦的攻擊路徑分析。
+            - paragraph [ref=e76]: Pentest / Automation
+  - contentinfo [ref=e77]:
+    - paragraph [ref=e78]: 聯絡
+    - paragraph [ref=e79]: 有專案想談，或想為團隊安排一場訓練？
+    - link "workfile975@gmail.com" [ref=e80] [cursor=pointer]:
+      - /url: mailto:workfile975@gmail.com
+    - paragraph [ref=e81]:
+      - link "GitHub" [ref=e82] [cursor=pointer]:
+        - /url: https://github.com/Lung-Yu
+      - text: · © 2026 Lung-Yu

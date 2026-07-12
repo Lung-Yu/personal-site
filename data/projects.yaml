@@ -1,30 +1,51 @@
 # 新增專案：year 為數字；tags 選填（不需翻譯的技術詞彙）。
-- id: ssdlc-platform
+# 以下皆為私有 repo 專案，卡片不放連結，頁尾註明原始碼可於面談時提供。
+- id: multi-agent-runtime
   title:
-    zh: SSDLC 學習平台
-    en: SSDLC Learning Platform
+    zh: 多代理人虛擬執行平台
+    en: Multi-Agent Virtual Actor Runtime
   description:
-    zh: 為企業內訓打造的安全開發生命週期學習平台，涵蓋威脅建模演練與 CI/CD 安全檢測實作。
-    en: A secure development lifecycle learning platform for corporate training, covering threat-modeling exercises and CI/CD security tooling labs.
-  year: 2025
-  tags: [SSDLC, DevSecOps, Training]
+    zh: 生產等級的 AI Agent 虛擬 Actor 執行環境：持久化執行、優先權郵箱、時間旅行重播與斷路器，內部服務以 NHI JWT 驗證，控制平面採 Temporal 編排，可從單機 Docker Compose 擴展到 GKE + KEDA。
+    en: Production-grade virtual actor runtime for AI agents — durable execution, priority mailboxes, time-travel replay, circuit breaking, and NHI JWT auth between internal services; Temporal-based control plane scaling from laptop to GKE + KEDA.
+  year: 2026
+  tags: [Go, Temporal, Multi-Agent, Observability]
 
-- id: threat-board
+- id: threatboard
   title:
-    zh: 威脅情資儀表板
-    en: Threat Intelligence Board
+    zh: ThreatBoard 威脅建模工具
+    en: ThreatBoard – Diagram-Driven Threat Modeling
   description:
-    zh: 整合多來源威脅情資的視覺化儀表板，協助資安團隊快速掌握攻擊面變化。
-    en: A visualization dashboard aggregating multi-source threat intelligence, helping security teams track attack-surface changes at a glance.
-  year: 2024
-  tags: [Threat Intel, Dashboard]
+    zh: 以 Excalidraw 架構圖為輸入的威脅建模 CLI：套用 STRIDE 方法論分析、依嚴重度與暴露面排序風險、把發現標注回原始圖面，並輸出 SARIF 供 CI/CD 安全關卡使用。
+    en: A CLI that turns Excalidraw architecture diagrams into threat models — pluggable STRIDE analysis, severity-by-exposure prioritization, annotated diagrams, and SARIF output for CI security gates.
+  year: 2026
+  tags: [TypeScript, Threat Modeling, STRIDE, DevSecOps]
 
 - id: auto-pentest
   title:
-    zh: 自動化滲透測試工具鏈
-    en: Automated Pentest Toolchain
+    zh: 自動化滲透測試平台
+    en: Automated Penetration Testing Platform
   description:
-    zh: 將例行性滲透測試項目自動化，讓顧問時間集中在真正需要人腦的攻擊路徑分析。
-    en: Automates routine pentest checks so consultant hours go to the attack-path analysis that actually needs a human brain.
-  year: 2023
-  tags: [Pentest, Automation]
+    zh: 事件驅動的自動化滲透測試平台，多代理協作完成偵察、網頁測試與報告產生；內建授權白名單、SSRF 防護與危險探測停用等安全邊界，測試結果以 Web UI 呈現。
+    en: An event-driven pentesting platform with multi-agent orchestration for recon, web testing, and reporting — built-in authorization allowlist, SSRF protections, and destructive probes disabled by design, with a web reporting UI.
+  year: 2026
+  tags: [Python, Security Testing, Multi-Agent]
+
+- id: lumencloak
+  title:
+    zh: LumenCloak 原始碼安全分析工具
+    en: LumenCloak – Static Code Security Analyzer
+  description:
+    zh: 採 DDD 分層架構的原始碼安全分析服務，內建可擴充的偵測規則（SQL Injection、憑證洩漏），支援檔案上傳與非同步分析排程——程式碼安全審查服務的自動化利器。
+    en: A DDD-structured static analyzer with pluggable detection rules (SQL injection, credential leakage), file-upload scanning, and async analysis scheduling — the automation counterpart to manual secure code review.
+  year: 2026
+  tags: [Java, Spring Boot, Static Analysis, Code Review]
+
+- id: vuln-management-center
+  title:
+    zh: 漏洞管理中心
+    en: Vulnerability Management Center
+  description:
+    zh: 微服務架構的企業漏洞管理平台，以 API Gateway 整合應用程式資產管理與漏洞議題追蹤服務，展示資安治理流程如何系統化、平台化落地。
+    en: A microservices-based vulnerability management platform integrating application inventory and issue tracking behind an API gateway — security governance workflows, systematized as a platform.
+  year: 2026
+  tags: [Java, Microservices, Security Governance]
