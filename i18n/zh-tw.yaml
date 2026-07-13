@@ -18,7 +18,7 @@ mailto_query: "?subject=%E5%B0%88%E6%A1%88%E8%AB%AE%E8%A9%A2&body=%E6%82%A8%E5%A
 contact_hint: 點擊會用範本開啟您的郵件軟體，或複製地址自行寄送。
 copy_email: 複製地址
 copied: 已複製
-projects_note: 以上專案原始碼未公開，架構細節與展示可於面談時提供。
+projects_note: 除已附連結者外，其餘專案原始碼未公開，架構細節與展示可於面談時提供。
 services_fit: 特別適合正在建立或優化安全開發流程的團隊——導入 DevSecOps 但缺乏專職資安主管的中小型工程團隊、需要落實合規要求的金融科技產業、想在既有開發流程中導入 AI 但擔心安全疑慮的組織。
 cta_track_record: 有類似的挑戰想聊聊？
 scroll: 往下探索

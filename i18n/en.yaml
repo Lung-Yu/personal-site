@@ -18,7 +18,7 @@ mailto_query: "?subject=Project%20inquiry&body=Hi%2C%20I%27d%20like%20to%20talk%
 contact_hint: Opens your email app with a template, or copy the address to send it yourself.
 copy_email: Copy address
 copied: Copied
-projects_note: Source code for these projects is private; architecture walkthroughs and demos available on request.
+projects_note: Except where linked, source code for these projects is private; architecture walkthroughs and demos available on request.
 services_fit: Best suited for teams building or maturing a secure development process — small-to-mid engineering teams adopting DevSecOps without a dedicated security lead, fintech organisations working through compliance requirements, and teams bringing AI into their workflow who are wary of the security implications.
 cta_track_record: Facing something similar?
 scroll: Scroll to explore

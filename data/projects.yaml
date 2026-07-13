@@ -1,12 +1,34 @@
-# 新增專案：year 為數字；tags 選填（不需翻譯的技術詞彙）。
-# 以下皆為私有 repo 專案，卡片不放連結，頁尾註明原始碼可於面談時提供。
+# 新增專案：year 為數字或年份區間字串；tags 選填（不需翻譯的技術詞彙）；url 選填（公開 repo 才填）。
+# 未標 url 的皆為私有 repo，頁尾註明原始碼可於面談時提供。
+- id: ai-tab-organizer
+  title:
+    zh: AI 分頁整理器
+    en: AI Tab Organizer
+  description:
+    zh: 已上架 Chrome Web Store 的擴充功能（v1.4.0），以 AI 智慧分類、去重複並整理瀏覽器分頁；支援 OpenAI、Anthropic Claude 與 Google Gemini，本地優先、自帶金鑰，注重隱私。
+    en: A published Chrome extension (v1.4.0) that uses AI to intelligently categorize, deduplicate, and organize browser tabs; supports OpenAI, Anthropic Claude, and Google Gemini, local-first with bring-your-own-key, privacy-conscious by design.
+  year: 2026
+  tags: [Chrome Extension, OpenAI, Claude, Gemini, Privacy]
+  url: https://github.com/Lung-Yu/ai-tab-organizer-docs
+
+- id: gemini-rag-chat
+  title:
+    zh: Gemini RAG 聊天應用
+    en: Gemini RAG Chat
+  description:
+    zh: 以 Google Gemini 2.5 Flash 驅動的全端 RAG 聊天應用程式，上傳文件（.txt/.pdf/.docx）即可提問並取得基於文件內容的精確回答；FastAPI 後端＋React 前端，Docker Compose 完整容器化。
+    en: A full-stack RAG chat application powered by Google Gemini 2.5 Flash — upload documents (.txt/.pdf/.docx) and get grounded answers; FastAPI backend, React frontend, fully containerized with Docker Compose.
+  year: "2025–2026"
+  tags: [AI, RAG, Gemini, FastAPI, React]
+  url: https://github.com/Lung-Yu/gemini-rag
+
 - id: multi-agent-runtime
   title:
     zh: 多代理人虛擬執行平台
     en: Multi-Agent Virtual Actor Runtime
   description:
-    zh: 生產等級的 AI Agent 虛擬 Actor 執行環境：持久化執行、優先權郵箱、時間旅行重播與斷路器，內部服務以 NHI JWT 驗證，控制平面採 Temporal 編排，可從單機 Docker Compose 擴展到 GKE + KEDA。
-    en: Production-grade virtual actor runtime for AI agents — durable execution, priority mailboxes, time-travel replay, circuit breaking, and NHI JWT auth between internal services; Temporal-based control plane scaling from laptop to GKE + KEDA.
+    zh: 生產等級的 AI Agent 虛擬 Actor 執行環境：持久化執行、優先權郵箱、時間旅行重播，內部服務以 NHI JWT 驗證；Dapr 管理狀態與服務發現，gVisor 沙箱隔離不受信任的 Agent 執行；控制平面採 Temporal 編排，可從單機 Docker Compose 擴展到 GKE，並以 KEDA 自動擴縮。
+    en: Production-grade virtual actor runtime for AI agents — durable execution, priority mailboxes, time-travel replay, and NHI JWT auth between internal services; Dapr handles state and service discovery, gVisor sandboxes untrusted agent execution; Temporal-based control plane scaling from laptop to GKE with KEDA autoscaling.
   year: 2026
   tags: [Go, Temporal, Multi-Agent, Observability]
 

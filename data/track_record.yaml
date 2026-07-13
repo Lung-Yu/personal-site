@@ -4,16 +4,16 @@
     zh: Polisana 弱點管理平台
     en: Polisana Vulnerability Management Platform
   description:
-    zh: 自主研發的 AI-native 弱點管理平台，微服務架構；基礎設施由 On-demand GKE 演進為 Terraform 全 IaC 化管理，提升可靠性與可擴展性。
-    en: An AI-native vulnerability management platform built in-house with a microservices architecture; infrastructure evolved from on-demand GKE to fully Terraform-managed IaC on GCP.
+    zh: 自主研發的 AI-native 弱點管理平台，整合 SAST、SBOM 與主機掃描結果於統一風險工作流程，取代分散的企業工具鏈；提供角色型儀表板與基於 Vertex AI RAG 的 AI 資安顧問，服務對象涵蓋 CISO 與資安經理。基礎設施由 On-demand GKE 演進為 Terraform 全 IaC 化管理。
+    en: An AI-native vulnerability management platform consolidating SAST, SBOM, and host-scan results into one risk workflow — replacing fragmented enterprise toolchains; role-based dashboards and an AI security consultant built on Vertex AI RAG, serving CISOs and security managers. Infrastructure evolved from on-demand GKE to fully Terraform-managed IaC.
 
 - id: scanportal
   title:
     zh: ScanPortal 原始碼檢測平台
     en: ScanPortal — Source Code Scanning Platform
   description:
-    zh: 一站式網頁原始碼檢測平台，獨立主導 portal-agent 分離式架構設計（437 次程式提交），成功售予 2 家企業客戶。
-    en: A one-stop web-based source code scanning platform; independently led the portal-agent split architecture (437 commits), successfully sold to 2 enterprise clients.
+    zh: 一站式網頁原始碼檢測平台，獨立主導 portal-agent 分離式架構設計（437 次程式提交）；以自助式介面消除 80% 重複性人工操作，降低企業導入門檻，成功售予 2 家企業客戶。
+    en: A one-stop web-based source code scanning platform; independently led the portal-agent split architecture (437 commits). Its self-service interface eliminates 80% of repetitive manual operations, lowering the adoption barrier versus high-cost enterprise tools — sold to 2 enterprise clients.
 
 - id: financial-scanning-platform
   title:

@@ -92,7 +92,7 @@
     <li class="row">
       <span class="year">{{ .year }}</span>
       <div>
-        <h3>{{ index .title $l }}</h3>
+        <h3>{{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ index .title $l }}</a>{{ else }}{{ index .title $l }}{{ end }}</h3>
         <p>{{ index .description $l }}</p>
         {{ with .tags }}<p class="tags">{{ delimit . " / " }}</p>{{ end }}
       </div>
