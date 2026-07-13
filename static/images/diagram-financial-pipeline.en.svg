@@ -1,0 +1,32 @@
+<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace, Menlo, Consolas, monospace">
+  <rect width="900" height="260" fill="#0b1120"/>
+  <text x="36" y="38" fill="#94a3bf" font-size="13" letter-spacing="2">3-YEAR PHASED ROLLOUT</text>
+
+  <g font-size="12" fill="#eaeef6" text-anchor="middle">
+    <rect x="36" y="70" width="150" height="46" rx="4" fill="none" stroke="#94a3bf" stroke-width="1.3"/>
+    <text x="111" y="98">WebInspect</text>
+
+    <rect x="36" y="150" width="150" height="46" rx="4" fill="none" stroke="#94a3bf" stroke-width="1.3"/>
+    <text x="111" y="178">Fortify SCA</text>
+
+    <rect x="290" y="110" width="160" height="46" rx="4" fill="none" stroke="#c9a227" stroke-width="1.5"/>
+    <text x="370" y="138">Jenkins Scan Farm</text>
+
+    <rect x="554" y="110" width="130" height="46" rx="4" fill="none" stroke="#94a3bf" stroke-width="1.3"/>
+    <text x="619" y="138">Aggregation</text>
+
+    <rect x="788" y="110" width="76" height="46" rx="4" fill="none" stroke="#c9a227" stroke-width="1.5"/>
+    <text x="826" y="132">Approval</text>
+    <text x="826" y="147">Flow</text>
+  </g>
+
+  <g stroke="#94a3bf" stroke-width="1.2" stroke-opacity="0.6" fill="none">
+    <path d="M186 93 L290 133"/>
+    <path d="M186 173 L290 143"/>
+    <line x1="450" y1="133" x2="554" y2="133"/>
+    <line x1="684" y1="133" x2="788" y2="133"/>
+  </g>
+
+  <text x="370" y="196" fill="#94a3bf" font-size="10.5" text-anchor="middle">parallel black/white-box scans</text>
+  <text x="864" y="196" fill="#e8c55c" font-size="10.5" text-anchor="end">embedded in dev workflow</text>
+</svg>

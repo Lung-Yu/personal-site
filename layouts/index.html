@@ -73,7 +73,11 @@
 
 <section id="track-record" class="reveal">
   <p class="eyebrow">§05 · {{ i18n "track_record" }}</p>
+  {{ $suffix := cond (eq $l "en") ".en" "" }}
   <div class="prose case-study">{{ i18n "case_study" | markdownify }}</div>
+  <img class="case-diagram" src="{{ printf "images/diagram-financial-pipeline%s.svg" $suffix | relURL }}" alt="{{ i18n "diagram_financial_alt" }}" loading="lazy">
+  <div class="prose case-study">{{ i18n "case_study_2" | markdownify }}</div>
+  <img class="case-diagram" src="{{ printf "images/diagram-polisana-workflow%s.svg" $suffix | relURL }}" alt="{{ i18n "diagram_polisana_alt" }}" loading="lazy">
   <ul class="cards">
     {{ range hugo.Data.track_record }}
     <li class="card">

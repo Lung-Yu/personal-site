@@ -182,7 +182,8 @@ h3 { font-family: var(--serif); font-weight: 500; color: var(--paper); font-size
 .prose { font-size: 1.05rem; max-width: 68ch; }
 .prose p + p { margin-top: 1.2rem; }
 .prose strong { color: var(--gold-2); font-weight: 600; }
-.case-study { margin-bottom: 2.6rem; padding-bottom: 2.6rem; border-bottom: 1px solid var(--hairline); }
+.case-study { margin-bottom: 1.6rem; }
+.case-diagram { display: block; width: 100%; height: auto; border: 1px solid var(--hairline); border-radius: 3px; margin-bottom: 2.4rem; }
 .services-fit { font-size: 1rem; color: var(--fog); max-width: 62ch; margin-bottom: 2.2rem; }
 
 /* ---- posts ---- */
