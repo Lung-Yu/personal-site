@@ -76,8 +76,6 @@
   {{ $suffix := cond (eq $l "en") ".en" "" }}
   <div class="prose case-study">{{ i18n "case_study" | markdownify }}</div>
   <img class="case-diagram" src="{{ printf "images/diagram-financial-pipeline%s.svg" $suffix | relURL }}" alt="{{ i18n "diagram_financial_alt" }}" loading="lazy">
-  <div class="prose case-study">{{ i18n "case_study_2" | markdownify }}</div>
-  <img class="case-diagram" src="{{ printf "images/diagram-polisana-workflow%s.svg" $suffix | relURL }}" alt="{{ i18n "diagram_polisana_alt" }}" loading="lazy">
   <ul class="cards">
     {{ range hugo.Data.track_record }}
     <li class="card">
@@ -86,7 +84,10 @@
     </li>
     {{ end }}
   </ul>
-  <p class="note"><a href="#contact">{{ i18n "cta_track_record" }} →</a></p>
+  <p class="note">
+    <a href="{{ "case-studies" | relLangURL }}">{{ i18n "more_case_studies" }} →</a>
+    · <a href="#contact">{{ i18n "cta_track_record" }} →</a>
+  </p>
 </section>
 
 <section id="projects" class="reveal">

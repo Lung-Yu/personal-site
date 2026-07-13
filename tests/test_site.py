@@ -70,12 +70,13 @@ for lang, page in [("zh", PUBLIC / "index.html"), ("en", PUBLIC / "en" / "index.
             probe = item.get("name") or label_field[lang]
             check(probe in html, f"{lang} 頁面缺少 {name}/{item['id']}")
 
-# 2b. 文章頁面雙語建置正確性：每篇文章的 zh/en 版都要產出
-posts_dir = ROOT / "content" / "posts"
-post_slugs = sorted({p.stem.removesuffix(".en") for p in posts_dir.glob("*.md") if p.stem != "_index" and not p.stem.startswith("_index.")})
-for slug in post_slugs:
-    check((PUBLIC / "posts" / slug / "index.html").exists(), f"未產出 zh 文章 posts/{slug}")
-    check((PUBLIC / "en" / "posts" / slug / "index.html").exists(), f"未產出 en 文章 posts/{slug}")
+# 2b. 內容頁面雙語建置正確性：文章與案例故事的 zh/en 版都要產出
+for section in ["posts", "case-studies"]:
+    section_dir = ROOT / "content" / section
+    slugs = sorted({p.stem.removesuffix(".en") for p in section_dir.glob("*.md") if p.stem != "_index" and not p.stem.startswith("_index.")})
+    for slug in slugs:
+        check((PUBLIC / section / slug / "index.html").exists(), f"未產出 zh {section}/{slug}")
+        check((PUBLIC / "en" / section / slug / "index.html").exists(), f"未產出 en {section}/{slug}")
 
 # 3. 本地資源有效性：頁面引用的站內資源都存在於產出
 if PUBLIC.exists():

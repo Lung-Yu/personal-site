@@ -21,8 +21,8 @@ copied: Copied
 projects_note: Except where linked, source code for these projects is private; architecture walkthroughs and demos available on request.
 services_fit: Best suited for teams building or maturing a secure development process — small-to-mid engineering teams adopting DevSecOps without a dedicated security lead, fintech organisations working through compliance requirements, and teams bringing AI into their workflow who are wary of the security implications.
 cta_track_record: Facing something similar?
+more_case_studies: More case studies
 diagram_financial_alt: A 3-year phased rollout diagram — WebInspect and Fortify SCA run parallel black/white-box scans feeding a Jenkins distributed-scanning architecture, with results embedded into the existing development approval workflow
-diagram_polisana_alt: A unified risk workflow diagram — fragmented SAST/SBOM/host-scan tooling on the left, consolidated into the Polisana platform on the right, feeding role-based dashboards for CISOs and security managers
 scroll: Scroll to explore
 case_study: |
   **Three years, from friction to trust.** When financial institutions adopt automated security scanning, the real obstacle is rarely technical — it's trust. Engineering teams fear security gates will slow delivery; security teams fear compromise will buy only the illusion of safety. That's the core argument I made at Digicentre's Hacker Talk ("Building Secure Software Starts with Effective Communication") and DevOpsDays Taipei 2024 ("DevOps + Sec: Strong Support or Troublemakers?").
@@ -30,9 +30,3 @@ case_study: |
   For a listed financial institution's black/white-box automated scanning needs, we chose a 3-year phased rollout over a big-bang launch — integrating WebInspect and Fortify SCA into a Jenkins-based distributed scanning architecture, and embedding the approval workflow directly into the existing development process so security checks became part of the delivery cadence, not an extra gate.
 
   The final milestone — Phase 3, Stage 2 — shipped on schedule in September 2025, closing out the 3-year engagement.
-case_study_2: |
-  **From fragmented tooling to one risk picture.** Most organizations run their security tools in silos: SAST results live in one system, SBOM dependency data in another, host vulnerability scans in a third — leaving security leads to manually stitch together the full risk picture themselves.
-
-  At Cloudforce, I led the development of Polisana, consolidating all three scan types into a single risk workflow that replaced the fragmented toolchain; role-based dashboards let CISOs and security managers see cross-system risk directly, without hand-assembling the data themselves.
-
-  Infrastructure scaled alongside the platform's maturity — Terraform-managed cloud resources grew from 3 to 69 — and we integrated an AI security consultant built on Vertex AI RAG, so first-line risk triage no longer depends entirely on human bandwidth.

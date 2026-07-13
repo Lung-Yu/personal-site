@@ -3,6 +3,6 @@
   <p class="eyebrow">{{ .Date.Format "2006-01-02" }}</p>
   <h1>{{ .Title }}</h1>
   <div class="prose">{{ .Content }}</div>
-  <p class="note"><a href="{{ "posts" | relLangURL }}">← {{ i18n "posts" }}</a></p>
+  <p class="note"><a href="{{ .CurrentSection.RelPermalink }}">← {{ .CurrentSection.Title }}</a></p>
 </article>
 {{ end }}

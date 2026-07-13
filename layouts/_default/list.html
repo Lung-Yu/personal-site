@@ -1,6 +1,6 @@
 {{ define "main" }}
 <section class="reveal">
-  <p class="eyebrow">{{ i18n "posts" }}</p>
+  <p class="eyebrow">{{ .Title }}</p>
   <ul class="rows">
     {{ range .Pages.ByDate.Reverse }}
     <li class="row">
