@@ -22,6 +22,7 @@ projects_note: Except where linked, source code for these projects is private; a
 services_fit: Best suited for teams building or maturing a secure development process — small-to-mid engineering teams adopting DevSecOps without a dedicated security lead, fintech organisations working through compliance requirements, and teams bringing AI into their workflow who are wary of the security implications.
 cta_track_record: Facing something similar?
 more_case_studies: More case studies
+more_projects: More projects
 diagram_financial_alt: A 3-year phased rollout diagram — WebInspect and Fortify SCA run parallel black/white-box scans feeding a Jenkins distributed-scanning architecture, with results embedded into the existing development approval workflow
 scroll: Scroll to explore
 case_study: |

@@ -60,15 +60,23 @@ for name, fields in REQUIRED.items():
     entries[name] = items
 
 # 2. 雙語建置正確性：每筆條目都要出現在對應語言頁面
-for lang, page in [("zh", PUBLIC / "index.html"), ("en", PUBLIC / "en" / "index.html")]:
-    if not check(page.exists(), f"未產出 {page.relative_to(ROOT)}（先執行 hugo）"):
+# projects 只有 featured 會上首頁，其餘要在 /projects/ 完整列表頁出現
+for lang, home, extra in [
+    ("zh", PUBLIC / "index.html", PUBLIC / "projects" / "index.html"),
+    ("en", PUBLIC / "en" / "index.html", PUBLIC / "en" / "projects" / "index.html"),
+]:
+    if not check(home.exists(), f"未產出 {home.relative_to(ROOT)}（先執行 hugo）"):
         continue
-    html = page.read_text()
+    home_html = home.read_text()
+    extra_html = extra.read_text() if check(extra.exists(), f"未產出 {extra.relative_to(ROOT)}") else ""
     for name, items in entries.items():
         for item in items:
             label_field = item.get("title") or item.get("category")
             probe = item.get("name") or label_field[lang]
-            check(probe in html, f"{lang} 頁面缺少 {name}/{item['id']}")
+            if name == "projects" and not item.get("featured"):
+                check(probe in extra_html, f"{lang} 完整專案頁缺少 {name}/{item['id']}")
+            else:
+                check(probe in home_html, f"{lang} 頁面缺少 {name}/{item['id']}")
 
 # 2b. 內容頁面雙語建置正確性：文章與案例故事的 zh/en 版都要產出
 for section in ["posts", "case-studies"]:

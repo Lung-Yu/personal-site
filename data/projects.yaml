@@ -1,6 +1,8 @@
 # 新增專案：year 為數字或年份區間字串；tags 選填（不需翻譯的技術詞彙）；url 選填（公開 repo 才填）。
 # 未標 url 的皆為私有 repo，頁尾註明原始碼可於面談時提供。
+# featured: true 的會出現在首頁精選，全部專案（含未精選）都在 /projects/ 完整列表。
 - id: ai-tab-organizer
+  featured: true
   title:
     zh: AI 分頁整理器
     en: AI Tab Organizer
@@ -12,6 +14,7 @@
   url: https://github.com/Lung-Yu/ai-tab-organizer-docs
 
 - id: gemini-rag-chat
+  featured: true
   title:
     zh: Gemini RAG 聊天應用
     en: Gemini RAG Chat
@@ -23,6 +26,7 @@
   url: https://github.com/Lung-Yu/gemini-rag
 
 - id: multi-agent-runtime
+  featured: true
   title:
     zh: 多代理人虛擬執行平台
     en: Multi-Agent Virtual Actor Runtime

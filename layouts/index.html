@@ -93,7 +93,7 @@
 <section id="projects" class="reveal">
   <p class="eyebrow">§06 · {{ i18n "projects" }}</p>
   <ul class="rows">
-    {{ range hugo.Data.projects }}
+    {{ range where hugo.Data.projects "featured" true }}
     <li class="row">
       <span class="year">{{ .year }}</span>
       <div>
@@ -104,7 +104,10 @@
     </li>
     {{ end }}
   </ul>
-  <p class="note">{{ i18n "projects_note" }}</p>
+  <p class="note">
+    <a href="{{ "projects" | relLangURL }}">{{ i18n "more_projects" }} →</a>
+    · {{ i18n "projects_note" }}
+  </p>
 </section>
 
 <section id="speaking" class="reveal">

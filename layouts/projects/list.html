@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{ $l := cond (eq .Site.Language.Lang "en") "en" "zh" }}
+<section class="reveal">
+  <p class="eyebrow">{{ .Title }}</p>
+  <ul class="rows">
+    {{ range hugo.Data.projects }}
+    <li class="row">
+      <span class="year">{{ .year }}</span>
+      <div>
+        <h3>{{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ index .title $l }}</a>{{ else }}{{ index .title $l }}{{ end }}</h3>
+        <p>{{ index .description $l }}</p>
+        {{ with .tags }}<p class="tags">{{ delimit . " / " }}</p>{{ end }}
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+  <p class="note">{{ i18n "projects_note" }}</p>
+</section>
+{{ end }}
