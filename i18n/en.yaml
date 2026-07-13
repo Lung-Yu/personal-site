@@ -93,26 +93,23 @@ dfd_add_process: "+ Process"
 dfd_add_store: "+ Data Store"
 dfd_add_boundary: "+ Trust Boundary"
 dfd_connect: Connect Flow
-dfd_connect_hint: "Connect mode: click a source node, then a target node (Esc to cancel)"
+dfd_connect_hint: "Connect mode: press and drag from a source node to a target node (Esc to cancel)"
 dfd_delete: Delete Selected
 dfd_clear: Clear Canvas
 dfd_analyze: Analyze
 dfd_copy: Copy checklist
 dfd_copied: Copied
-dfd_hint: Click a button above to add an element, then click the canvas to place it. Drag to move, double-click to rename. Click "Connect Flow" then click a source and target node to draw a data flow. The trust boundary is a draggable divider line — whether a flow crosses it is detected automatically at analysis time.
+dfd_hint: Click a button above to add an element, then click the canvas to place it and type its name right there. Drag to move, double-click to edit the label in place. Click "Connect Flow", then press and drag from a source node to a target node to draw a data flow. The trust boundary is a draggable divider line — whether a flow crosses it is detected automatically at analysis time.
 dfd_placing_hint: Click anywhere on the canvas to place the element
 dfd_label_entity: External Entity
 dfd_label_process: Process
 dfd_label_store: Data Store
 dfd_label_boundary: Trust Boundary
 dfd_label_flow: Data Flow
-dfd_prompt_entity: "External entity name (e.g. User, Third-party API)"
-dfd_prompt_process: "Process name (e.g. Login Service, Order Processing)"
-dfd_prompt_store: "Data store name (e.g. User Database, Log Storage)"
-dfd_prompt_boundary: "Trust boundary name (e.g. Internet Boundary)"
-dfd_prompt_flow: "Data flow name (e.g. Login Credentials, Query Result)"
 dfd_empty_hint: "The canvas is empty — add at least one process and one data flow before analyzing."
 dfd_confirm_clear: "Clear everything on the canvas? This can't be undone."
+dfd_dialog_confirm: OK
+dfd_dialog_cancel: Cancel
 dfd_result_label: Findings (grouped by element)
 dfd_boundary_cross: "This data flow crosses the trust boundary \"{boundary}\": neither side can assume the other has already validated it — re-validate input and identity at the boundary."
 dfd_entity_s: "Verify the external entity \"{name}\" is properly authenticated before crossing into the system, rather than trusted on its self-declared identity."

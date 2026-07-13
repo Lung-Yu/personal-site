@@ -360,6 +360,47 @@ ul.certs, ul.cards, ul.rows { list-style: none; padding: 0; }
 .dfd-flow { cursor: pointer; }
 .dfd-flow-label { font-family: var(--mono); font-size: 10px; fill: var(--fog); pointer-events: none; }
 .dfd-label-bg { fill: var(--ink-2); opacity: 0.9; pointer-events: none; }
+.dfd-node.connect-source .dfd-shape { stroke: var(--gold-2); stroke-width: 2.5; }
+.dfd-temp-line { stroke: var(--gold-2); stroke-width: 1.5; stroke-dasharray: 4 3; pointer-events: none; }
+.dfd-hit-area { fill: transparent; } /* 開放式方框中間沒有實際塗色，補一塊看不見但可命中的區域，讓拖曳連線放開時偵測得到 */
+.dfd-inline-input {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background: var(--ink);
+  border: 1px solid var(--gold-2);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 11px;
+  text-align: center;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+.dfd-inline-input:focus { outline: none; }
+
+.dfd-dialog {
+  background: var(--ink-2);
+  color: var(--fog);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 1.6rem 1.6rem 1.4rem;
+  width: min(380px, 90vw);
+}
+.dfd-dialog::backdrop { background: rgba(11, 17, 32, 0.72); backdrop-filter: blur(2px); }
+.dfd-dialog-title { font-family: var(--serif); color: var(--paper); font-size: 1.05rem; margin-bottom: 1rem; }
+.dfd-dialog-actions { display: flex; justify-content: flex-end; gap: 0.7rem; margin-top: 1.3rem; }
+.dfd-dialog-actions button {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 1.1rem;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.dfd-dialog-actions .primary { background: var(--gold); border: 1px solid var(--gold); color: var(--ink); }
+.dfd-dialog-actions .primary:hover { background: var(--gold-2); border-color: var(--gold-2); }
+.dfd-dialog-actions .ghost { background: none; border: 1px solid var(--hairline); color: var(--fog); }
+.dfd-dialog-actions .ghost:hover { border-color: var(--line); color: var(--paper); }
 .tool-hint { margin-top: 0.9rem; font-size: 0.82rem; color: var(--fog); opacity: 0.8; }
 .tool-error { margin-top: 1.2rem; font-family: var(--mono); font-size: 0.85rem; color: var(--gold-2); border-left: 2px solid var(--gold-2); padding-left: 0.9rem; }
 .tool-result { margin-top: 2rem; }

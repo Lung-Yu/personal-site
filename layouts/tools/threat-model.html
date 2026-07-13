@@ -34,19 +34,22 @@
       <div id="dfd-groups" class="stride-groups"></div>
     </div>
   </div>
+
+  <dialog id="dfd-dialog" class="dfd-dialog">
+    <form method="dialog" class="dfd-dialog-form">
+      <p class="dfd-dialog-title" id="dfd-dialog-title"></p>
+      <div class="dfd-dialog-actions">
+        <button type="button" class="ghost" id="dfd-dialog-cancel">{{ i18n "dfd_dialog_cancel" }}</button>
+        <button type="submit" class="primary" value="ok">{{ i18n "dfd_dialog_confirm" }}</button>
+      </div>
+    </form>
+  </dialog>
 </section>
 
 <script type="application/json" id="dfd-strings">
 {
   "strideLabels": { "S": {{ i18n "stride_s" }}, "T": {{ i18n "stride_t" }}, "R": {{ i18n "stride_r" }}, "I": {{ i18n "stride_i" }}, "D": {{ i18n "stride_d" }}, "E": {{ i18n "stride_e" }} },
   "typeLabels": { "entity": {{ i18n "dfd_label_entity" }}, "process": {{ i18n "dfd_label_process" }}, "store": {{ i18n "dfd_label_store" }}, "boundary": {{ i18n "dfd_label_boundary" }}, "flow": {{ i18n "dfd_label_flow" }} },
-  "prompts": {
-    "entity": {{ i18n "dfd_prompt_entity" }},
-    "process": {{ i18n "dfd_prompt_process" }},
-    "store": {{ i18n "dfd_prompt_store" }},
-    "boundary": {{ i18n "dfd_prompt_boundary" }},
-    "flow": {{ i18n "dfd_prompt_flow" }}
-  },
   "placingHint": {{ i18n "dfd_placing_hint" }},
   "connectHint": {{ i18n "dfd_connect_hint" }},
   "defaultHint": {{ i18n "dfd_hint" }},
