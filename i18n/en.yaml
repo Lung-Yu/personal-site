@@ -56,31 +56,37 @@ csp_input_label: CSP
 csp_placeholder: "Paste a CSP string, e.g.: default-src 'none'; script-src 'self'"
 csp_analyze: Analyze
 csp_clear: Clear
+csp_load_sample: Load sample
 csp_hint: Parsed entirely in your browser. Paste either the raw HTTP header value or a <meta> tag's content attribute.
 csp_directives_label: Parsed directives
 csp_findings_label: Findings
 csp_no_findings: No known common weaknesses found by this tool.
 csp_err_empty: Paste a CSP string first.
+csp_template_title: Suggested starter template
+csp_template_hint: "Start strict and loosen only what your app actually needs (e.g. the specific CDN or API domains you use) — it's easier to reason about than tightening a loose policy later."
+csp_template_copy: Copy template
+csp_fixed_title: Suggested fixed version
+csp_fixed_hint: Auto-generated from the findings on the left — high-risk settings removed, common gaps filled in. Review before use in case it blocks resources your site actually needs.
 csp_f_unsafe_inline_title: Allows unsafe-inline
-csp_f_unsafe_inline_desc: "{directive} includes 'unsafe-inline' — this gives up CSP's protection against inline script/style-based XSS."
+csp_f_unsafe_inline_desc: "{directive} includes 'unsafe-inline', meaning the browser will run any inline script/style in the page regardless of its source. This gives up CSP's protection against inline XSS entirely — if an attacker can inject a <script> tag or style attribute, they can run arbitrary code."
 csp_f_unsafe_eval_title: Allows unsafe-eval
-csp_f_unsafe_eval_desc: "{directive} includes 'unsafe-eval' — allows eval() and similar dynamic code execution, widening what XSS can do."
+csp_f_unsafe_eval_desc: "{directive} includes 'unsafe-eval', meaning the page can run dynamically-generated code via eval(), new Function(), string arguments to setTimeout, etc. This lets an XSS attacker run more complex payloads that are harder for static scanners to catch."
 csp_f_wildcard_title: Overly permissive source
-csp_f_wildcard_desc: "{directive} allows any origin ({source}) — effectively no restriction on where resources load from."
+csp_f_wildcard_desc: "{directive} allows any origin ({source}), meaning the browser won't restrict where this resource type loads from — if the page is ever tricked into loading a script from a malicious domain, CSP won't stop it."
 csp_f_no_object_src_title: object-src not set
-csp_f_no_object_src_desc: object-src is unrestricted — plugin content could be used to bypass other restrictions; consider setting it explicitly to 'none'.
+csp_f_no_object_src_desc: object-src is unrestricted, meaning plugin content like <object>, <embed>, and <applet> has no source restriction — it could be used to load Flash or other plugin content that bypasses script-src.
 csp_f_no_base_uri_title: base-uri not set
-csp_f_no_base_uri_desc: An injected <base> tag could hijack where relative-path resources load from; consider setting base-uri to 'self' or 'none'.
+csp_f_no_base_uri_desc: base-uri is unrestricted, meaning an attacker who can inject a <base> tag can change which origin every relative-path resource (scripts, styles, links) actually loads from — effectively hijacking the rest of the page's resource sources.
 csp_f_no_frame_ancestors_title: frame-ancestors not set
-csp_f_no_frame_ancestors_desc: The page could be framed for clickjacking; consider setting frame-ancestors to 'none' or 'self' as appropriate.
+csp_f_no_frame_ancestors_desc: frame-ancestors is unrestricted, meaning any site can embed this page in an iframe — a user could be tricked into clicking on page elements hidden inside another site (clickjacking) without realizing it.
 csp_f_no_default_src_title: default-src not set
-csp_f_no_default_src_desc: Resource types not otherwise listed fall back to the browser default (usually unrestricted) — consider setting default-src as a safety baseline.
+csp_f_no_default_src_desc: default-src is the fallback for any directive not explicitly listed. Without it, resource types not covered by a specific directive fall back to the browser default (usually unrestricted) — the actual coverage is narrower than it looks.
 csp_f_style_unsafe_inline_title: style-src allows unsafe-inline
-csp_f_style_unsafe_inline_desc: Lower risk than script-src, but can still be leveraged for CSS-injection-based data exfiltration.
+csp_f_style_unsafe_inline_desc: Lower risk than script-src's unsafe-inline, but an attacker can still use injected CSS (e.g. background-image with attribute selectors) to encode sensitive page data into an outbound request, exfiltrating it.
 csp_f_no_report_title: No violation reporting endpoint
-csp_f_no_report_desc: Neither report-uri nor report-to is set — CSP violations won't be logged, making it hard to know how the policy performs in practice.
+csp_f_no_report_desc: Neither report-uri nor report-to is set, meaning violations the browser blocks are never logged anywhere — there's no way to know what the policy is actually catching, or whether it's breaking legitimate resources.
 csp_f_default_wildcard_title: default-src is overly permissive
-csp_f_default_wildcard_desc: "default-src allows any origin ({source}). Any resource type not overridden by a more specific directive (img-src, connect-src, font-src, etc.) inherits this wide-open setting."
+csp_f_default_wildcard_desc: "default-src allows any origin ({source}). Any resource type not overridden by a more specific directive (img-src, connect-src, font-src, etc.) inherits this wide-open setting — the actual exposure is often wider than it looks."
 stride_intro: "Draw the simplest possible data flow diagram (DFD): external entities, processes, data stores, and a trust boundary, connected by data flows. Analysis walks each element using the STRIDE methodology's applicability table. This is a conversation starter, not a full threat model — real analysis still needs human review (see the ThreatBoard project)."
 stride_s: S — Spoofing
 stride_t: T — Tampering

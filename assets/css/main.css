@@ -450,6 +450,22 @@ ul.certs, ul.cards, ul.rows { list-style: none; padding: 0; }
 .csp-table th, .csp-table td { text-align: left; padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--hairline); vertical-align: top; }
 .csp-table th { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase; }
 .csp-table td { font-family: var(--mono); color: var(--paper); word-break: break-word; }
+.csp-template { margin-top: 1.8rem; padding-top: 1.6rem; border-top: 1px solid var(--hairline); }
+.csp-template pre {
+  background: var(--ink-2);
+  border: 1px solid var(--hairline);
+  border-radius: 2px;
+  padding: 1rem;
+  margin-top: 0.8rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--paper);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.csp-template button { margin-top: 0.8rem; }
+#csp-fixed.csp-template { border-top: 1px solid var(--hairline); }
 .stride-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.6rem 1.4rem; margin-top: 1.4rem; }
 .stride-check { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.92rem; }
 .stride-check input { margin-top: 0.3rem; accent-color: var(--gold); }

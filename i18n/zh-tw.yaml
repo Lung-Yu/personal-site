@@ -56,31 +56,37 @@ csp_input_label: CSP
 csp_placeholder: "貼上 CSP 字串，例如：default-src 'none'; script-src 'self'"
 csp_analyze: 分析
 csp_clear: 清除
+csp_load_sample: 載入範例
 csp_hint: 僅在瀏覽器端解析字串，不會送出任何資料。可貼上 HTTP 標頭值或 <meta> 標籤的 content 內容。
 csp_directives_label: 解析出的指令
 csp_findings_label: 檢查結果
 csp_no_findings: 未發現本工具已知的常見弱點設定。
 csp_err_empty: 請先貼上 CSP 字串。
+csp_template_title: 建議起手式範本
+csp_template_hint: 從嚴格的預設值開始，依應用程式實際需求逐步放寬（例如加入實際使用的 CDN、API 網域），會比從寬鬆設定開始收緊容易掌握風險。
+csp_template_copy: 複製範本
+csp_fixed_title: 建議修正後版本
+csp_fixed_hint: 依左側檢查結果自動移除高風險設定、補上常見遺漏指令；套用前請確認不會擋到網站實際需要載入的資源。
 csp_f_unsafe_inline_title: 允許 unsafe-inline
-csp_f_unsafe_inline_desc: "{directive} 含有 'unsafe-inline'，等同放棄 CSP 對內聯腳本／樣式類 XSS 的防護能力。"
+csp_f_unsafe_inline_desc: "{directive} 含有 'unsafe-inline'，代表瀏覽器會執行頁面中任何內聯的腳本／樣式，不論來源。這等同放棄 CSP 對內聯型 XSS 攻擊的防護能力——攻擊者只要能注入一段 <script> 或 style 屬性，就能執行任意程式碼。"
 csp_f_unsafe_eval_title: 允許 unsafe-eval
-csp_f_unsafe_eval_desc: "{directive} 含有 'unsafe-eval'，允許 eval() 等動態程式碼執行，會擴大 XSS 可利用的範圍。"
+csp_f_unsafe_eval_desc: "{directive} 含有 'unsafe-eval'，代表頁面可以用 eval()、new Function()、setTimeout 字串參數等方式執行動態產生的程式碼。這讓 XSS 攻擊者能執行更複雜、更難被靜態掃描偵測的 payload。"
 csp_f_wildcard_title: 來源設定過於寬鬆
-csp_f_wildcard_desc: "{directive} 允許任意來源（{source}），等於沒有限制載入來源。"
+csp_f_wildcard_desc: "{directive} 允許任意來源（{source}），代表瀏覽器不會限制從哪裡載入這類資源——只要頁面被誘導載入惡意網域的腳本，CSP 完全攔不住。"
 csp_f_no_object_src_title: 未設定 object-src
-csp_f_no_object_src_desc: 未限制 object-src，外掛物件可能被用來繞過其他限制，建議明確設為 'none'。
+csp_f_no_object_src_desc: 未限制 object-src，代表 <object>、<embed>、<applet> 之類的外掛內容沒有來源限制，可能被用來載入 Flash 或其他外掛物件以繞過 script-src 的限制。
 csp_f_no_base_uri_title: 未設定 base-uri
-csp_f_no_base_uri_desc: 未限制 base-uri，攻擊者插入的 <base> 標籤可能劫持相對路徑資源的載入位置，建議設為 'self' 或 'none'。
+csp_f_no_base_uri_desc: 未限制 base-uri，代表攻擊者若能注入一個 <base> 標籤，就能改變頁面中所有相對路徑資源（腳本、樣式、連結）實際載入的網域，等於劫持了頁面其餘部分的資源來源。
 csp_f_no_frame_ancestors_title: 未設定 frame-ancestors
-csp_f_no_frame_ancestors_desc: 頁面可能被嵌入 iframe 進行 Clickjacking，建議依需求設為 'none' 或 'self'。
+csp_f_no_frame_ancestors_desc: 未限制 frame-ancestors，代表任何網站都能把這個頁面嵌入 iframe，使用者可能在不知情的情況下對隱藏在其他網站裡的頁面元素進行點擊（Clickjacking）。
 csp_f_no_default_src_title: 未設定 default-src
-csp_f_no_default_src_desc: 未列出的資源類型將回退為瀏覽器預設（通常不受限制），建議明確設定 default-src 作為安全基準。
+csp_f_no_default_src_desc: default-src 是其他指令沒有明確列出時的回退值。沒設定時，未被個別指令覆蓋的資源類型會直接套用瀏覽器預設（通常等同不受限制），實際防護範圍比看起來的小。
 csp_f_style_unsafe_inline_title: style-src 允許 unsafe-inline
-csp_f_style_unsafe_inline_desc: 風險低於 script-src，但仍可能被用於 CSS 注入型的資料外洩攻擊。
+csp_f_style_unsafe_inline_desc: 風險低於 script-src 的 unsafe-inline，但攻擊者仍可能透過注入的 CSS（如 background-image 搭配屬性選擇器）將頁面上的敏感資料編碼進外部請求，達成資料外洩。
 csp_f_no_report_title: 未設定違規回報端點
-csp_f_no_report_desc: 未設定 report-uri 或 report-to，CSP 違規事件不會被記錄，難以掌握政策實際的攔截效果。
+csp_f_no_report_desc: 未設定 report-uri 或 report-to，代表瀏覽器攔截到的違規事件不會被送到任何地方記錄，等於政策實際攔截了什麼、有沒有誤傷合法資源，都無從得知。
 csp_f_default_wildcard_title: default-src 來源過於寬鬆
-csp_f_default_wildcard_desc: "default-src 允許任意來源（{source}）。沒有被更具體指令（如 img-src、connect-src、font-src）覆蓋的資源類型會直接套用這個寬鬆設定。"
+csp_f_default_wildcard_desc: "default-src 允許任意來源（{source}）。沒有被更具體指令（如 img-src、connect-src、font-src）覆蓋的資源類型，會直接繼承這個寬鬆設定，範圍可能比預期大很多。"
 stride_intro: 畫一張最簡單的資料流圖（DFD）：外部實體、流程、資料儲存、信任邊界，再用資料流把它們連起來。分析時會依照 STRIDE 方法論，針對每個元素套用對應的威脅類別——這是討論起點，不是完整的威脅建模，完整分析仍建議搭配人工複核（可參考 ThreatBoard 專案）。
 stride_s: S — 偽冒（Spoofing）
 stride_t: T — 竄改（Tampering）

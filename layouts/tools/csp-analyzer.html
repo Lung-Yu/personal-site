@@ -9,10 +9,19 @@
     <textarea id="csp-input" rows="4" spellcheck="false" placeholder="{{ i18n "csp_placeholder" }}"></textarea>
     <div class="tool-actions">
       <button type="button" id="csp-analyze-btn" class="primary">{{ i18n "csp_analyze" }}</button>
+      <button type="button" id="csp-sample-btn" class="ghost">{{ i18n "csp_load_sample" }}</button>
       <button type="button" id="csp-clear-btn" class="ghost">{{ i18n "csp_clear" }}</button>
     </div>
     <p class="tool-hint">{{ i18n "csp_hint" }}</p>
     <p id="csp-error" class="tool-error" hidden></p>
+
+    <div class="csp-template">
+      <h4>{{ i18n "csp_template_title" }}</h4>
+      <p class="tool-hint">{{ i18n "csp_template_hint" }}</p>
+      <pre id="csp-template-text"></pre>
+      <button type="button" id="csp-template-copy-btn" class="ghost" data-label="{{ i18n "csp_template_copy" }}" data-copied="{{ i18n "copied" }}">{{ i18n "csp_template_copy" }}</button>
+    </div>
+
     <div id="csp-result" class="tool-result" hidden>
       <h4>{{ i18n "csp_directives_label" }}</h4>
       <table class="csp-table">
@@ -21,6 +30,12 @@
       </table>
       <h4 class="findings-label">{{ i18n "csp_findings_label" }}</h4>
       <div id="csp-findings" class="findings"></div>
+      <div id="csp-fixed" class="csp-template" hidden>
+        <h4>{{ i18n "csp_fixed_title" }}</h4>
+        <p class="tool-hint">{{ i18n "csp_fixed_hint" }}</p>
+        <pre id="csp-fixed-text"></pre>
+        <button type="button" id="csp-fixed-copy-btn" class="ghost" data-label="{{ i18n "csp_template_copy" }}" data-copied="{{ i18n "copied" }}">{{ i18n "csp_template_copy" }}</button>
+      </div>
     </div>
   </div>
 </section>
