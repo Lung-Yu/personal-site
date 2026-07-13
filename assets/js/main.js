@@ -7,6 +7,22 @@ const io = new IntersectionObserver(
 );
 document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
+// 複製 email 按鈕：mailto 開不了郵件軟體時的備援
+const copyBtn = document.querySelector(".copy-email");
+if (copyBtn && navigator.clipboard) {
+  copyBtn.addEventListener("click", async () => {
+    await navigator.clipboard.writeText(copyBtn.dataset.email);
+    copyBtn.textContent = copyBtn.dataset.copied;
+    copyBtn.classList.add("done");
+    setTimeout(() => {
+      copyBtn.textContent = copyBtn.dataset.label;
+      copyBtn.classList.remove("done");
+    }, 1600);
+  });
+} else if (copyBtn) {
+  copyBtn.remove(); // 不支援 Clipboard API（如非 https）就不顯示，避免按了沒反應
+}
+
 // 僅在使用者明確開啟省流量模式時跳過 3D；3D 是本站的視覺簽名，行動裝置也保留
 const skip3d = navigator.connection?.saveData;
 

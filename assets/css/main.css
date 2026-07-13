@@ -305,9 +305,9 @@ ul.certs, ul.cards, ul.rows { list-style: none; padding: 0; }
 /* ---- footer ---- */
 footer { padding-bottom: 5rem; }
 footer .lead { font-family: var(--serif); font-size: clamp(1.4rem, 3vw, 2rem); color: var(--paper); max-width: 30ch; }
+footer .contact-actions { margin-top: 1.4rem; display: flex; align-items: baseline; flex-wrap: wrap; gap: 1rem; }
 footer .mail {
   display: inline-block;
-  margin-top: 1.4rem;
   font-family: var(--mono);
   font-size: clamp(0.95rem, 2.4vw, 1.25rem);
   letter-spacing: 0.06em;
@@ -316,6 +316,20 @@ footer .mail {
   padding-bottom: 0.3rem;
 }
 footer .mail:hover { color: var(--paper); border-color: var(--gold); }
+footer .copy-email {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--fog);
+  background: none;
+  border: 1px solid var(--hairline);
+  border-radius: 2px;
+  padding: 0.3rem 0.65rem;
+  cursor: pointer;
+  transition: border-color 0.3s, color 0.3s;
+}
+footer .copy-email:hover { border-color: var(--line); color: var(--paper); }
+footer .copy-email.done { border-color: var(--gold); color: var(--gold-2); }
 footer .contact-hint { margin-top: 1rem; font-size: 0.82rem; color: var(--fog); opacity: 0.8; max-width: 42ch; }
 footer .fine { margin-top: 3rem; font-size: 0.8rem; opacity: 0.7; }
 footer .fine .icon { width: 0.85em; height: 0.85em; vertical-align: -0.1em; margin-right: 0.3em; }

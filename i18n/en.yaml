@@ -14,7 +14,10 @@ speaking: Speaking
 posts: Writing
 contact: Contact
 contact_lead: Have a project in mind, or a team that needs training?
-contact_hint: It helps to include the project type, team size, and rough timeline when you reach out.
+mailto_query: "?subject=Project%20inquiry&body=Hi%2C%20I%27d%20like%20to%20talk%20about%3A%0A%0AProject%20type%3A%0ATeam%20size%3A%0ARough%20timeline%3A%0A%0A%28anything%20else%20you%27d%20like%20to%20add%29"
+contact_hint: Opens your email app with a template, or copy the address to send it yourself.
+copy_email: Copy address
+copied: Copied
 projects_note: Source code for these projects is private; architecture walkthroughs and demos available on request.
 services_fit: Best suited for teams building or maturing a secure development process — small-to-mid engineering teams adopting DevSecOps without a dedicated security lead, fintech organisations working through compliance requirements, and teams bringing AI into their workflow who are wary of the security implications.
 cta_track_record: Facing something similar?
