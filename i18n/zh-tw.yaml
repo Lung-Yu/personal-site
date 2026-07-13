@@ -28,12 +28,6 @@ scroll: 往下探索
 tools: 工具
 tools_intro: 三個純瀏覽器端執行的資安小工具——不會把任何內容送出，關閉分頁就沒有留下任何紀錄。設計理念呼應本站服務：解碼與檢查，而非取代人工判讀。
 tools_list_note: 原始碼皆為本站一部分，於面談時可一併說明實作細節。
-tool_jwt_title: JWT 解碼與風險檢查
-tool_jwt_summary: 貼上 JWT，離線解析 Header／Payload 並標註常見結構性風險。
-tool_csp_title: CSP 政策分析器
-tool_csp_summary: 貼上 Content-Security-Policy 字串，逐條檢查常見弱點設定。
-tool_stride_title: 威脅建模速查產生器
-tool_stride_summary: 回答幾個系統屬性問題，產生 STRIDE 分類的起手式檢查清單。
 tool_privacy_note: 所有運算都在您的瀏覽器內完成，本站不會接收、記錄或傳輸您輸入的任何內容。
 jwt_input_label: JWT
 jwt_placeholder: 貼上 eyJhbGciOi... 格式的 JWT
@@ -87,44 +81,55 @@ csp_f_no_report_title: 未設定違規回報端點
 csp_f_no_report_desc: 未設定 report-uri 或 report-to，CSP 違規事件不會被記錄，難以掌握政策實際的攔截效果。
 csp_f_default_wildcard_title: default-src 來源過於寬鬆
 csp_f_default_wildcard_desc: "default-src 允許任意來源（{source}）。沒有被更具體指令（如 img-src、connect-src、font-src）覆蓋的資源類型會直接套用這個寬鬆設定。"
-stride_intro: 勾選符合系統現況的項目，產生對應的 STRIDE 起手式檢查清單。這是討論起點，不是完整的威脅建模——完整分析仍建議搭配架構圖與人工複核（可參考 ThreatBoard 專案）。
-stride_generate: 產生清單
-stride_copy: 複製清單
-stride_copied: 已複製
-stride_q_auth: 系統需要使用者登入／身份驗證
-stride_q_internet: 系統可從網際網路存取（對外開放）
-stride_q_pii: 處理個資或機敏資料（PII／財務／健康）
-stride_q_thirdparty: 整合第三方 API 或外部服務
-stride_q_payment: 具有金流／付款相關功能
-stride_q_ai: 使用 AI／LLM 元件（如 RAG、Agent、Prompt 組裝）
-stride_q_multitenant: 具有多租戶或角色權限分級
-stride_result_label: 檢查清單
+stride_intro: 畫一張最簡單的資料流圖（DFD）：外部實體、流程、資料儲存、信任邊界，再用資料流把它們連起來。分析時會依照 STRIDE 方法論，針對每個元素套用對應的威脅類別——這是討論起點，不是完整的威脅建模，完整分析仍建議搭配人工複核（可參考 ThreatBoard 專案）。
 stride_s: S — 偽冒（Spoofing）
 stride_t: T — 竄改（Tampering）
 stride_r: R — 否認（Repudiation）
 stride_i: I — 資訊洩漏（Information Disclosure）
 stride_d: D — 阻斷服務（Denial of Service）
 stride_e: E — 權限提升（Elevation of Privilege）
-stride_base_s: 確認所有信任邊界（trust boundary）上的身份都有被驗證，而非僅憑來源 IP 或內部網路位置判斷可信任。
-stride_base_t: 確認關鍵資料在傳輸與儲存時都有完整性保護（如簽章、checksum、資料庫層級的變更追蹤）。
-stride_base_r: 確認關鍵操作（新增／修改／刪除／授權變更）都有可歸責的紀錄，且紀錄本身不可被操作者自行竄改。
-stride_base_i: 確認錯誤訊息、API 回應、日誌不會意外洩漏內部結構、堆疊追蹤或機敏資料。
-stride_base_d: 確認關鍵端點有速率限制或資源配額，避免單一來源耗盡系統資源。
-stride_base_e: 確認權限檢查在伺服器端執行，而非僅依賴前端 UI 隱藏功能。
-stride_auth_s: 檢查登入流程是否能抵禦憑證填充（credential stuffing）與工作階段固定攻擊（session fixation）。
-stride_auth_e: 確認密碼重設、MFA 綁定等帳戶復原流程本身不會成為權限提升的旁路。
-stride_internet_d: 評估是否需要 WAF／CDN 層級的流量防護，特別是應用層 DDoS。
-stride_internet_i: 確認對外服務不會透過版本號、標頭或除錯端點洩漏技術堆疊細節。
-stride_pii_i: 盤點所有個資的儲存、傳輸、記錄路徑，確認符合最小揭露原則與合規要求。
-stride_pii_t: 確認個資的存取與異動都有欄位層級的授權控制，而非僅有整張表的權限。
-stride_thirdparty_s: 確認與第三方 API 的通訊有驗證對方身份（如驗證憑證鏈、簽章），避免中間人偽造回應。
-stride_thirdparty_i: 檢查傳給第三方的資料是否超出必要範圍（過度分享）。
-stride_payment_r: 確認金流交易有不可否認的紀錄（如簽章、第三方支付閘道的交易序號比對）。
-stride_payment_t: 確認金額、幣別等關鍵欄位在後端有重新驗證，而非信任前端傳入值。
-stride_ai_t: 評估 Prompt Injection 風險：使用者輸入或外部檢索內容是否可能覆寫系統指令或觸發非預期工具呼叫。
-stride_ai_i: 確認模型輸出不會洩漏訓練資料、系統提示詞或其他使用者的內容（跨使用者資料污染）。
-stride_multitenant_e: 確認租戶／角色之間的資料存取有在資料層強制隔離，避免水平越權（IDOR）。
-stride_multitenant_s: 確認租戶識別（tenant ID）無法由使用者端請求自行指定或竄改。
+dfd_add_entity: ＋ 外部實體
+dfd_add_process: ＋ 流程
+dfd_add_store: ＋ 資料儲存
+dfd_add_boundary: ＋ 信任邊界
+dfd_connect: 連接資料流
+dfd_connect_hint: 連接模式：依序點選來源與目的節點（Esc 取消）
+dfd_delete: 刪除選取
+dfd_clear: 清空畫布
+dfd_analyze: 分析
+dfd_copy: 複製清單
+dfd_copied: 已複製
+dfd_hint: 點上方按鈕新增元素、點畫布放置；拖曳可移動，點兩下可改標籤；「連接資料流」後依序點選來源與目的節點畫出資料流；信任邊界是一條可拖曳的分隔線，資料流是否跨越邊界會在分析時自動判斷。
+dfd_placing_hint: 點畫布任一位置放置元素
+dfd_label_entity: 外部實體
+dfd_label_process: 流程
+dfd_label_store: 資料儲存
+dfd_label_boundary: 信任邊界
+dfd_label_flow: 資料流
+dfd_prompt_entity: 外部實體名稱（例如：使用者、第三方 API）
+dfd_prompt_process: 流程名稱（例如：登入服務、訂單處理）
+dfd_prompt_store: 資料儲存名稱（例如：使用者資料庫、日誌儲存）
+dfd_prompt_boundary: 信任邊界名稱（例如：網際網路邊界）
+dfd_prompt_flow: 資料流名稱（例如：登入憑證、查詢結果）
+dfd_empty_hint: 畫布上還沒有元素——先新增至少一個流程與一條資料流，再按分析。
+dfd_confirm_clear: 確定要清空畫布上的所有元素嗎？此動作無法復原。
+dfd_result_label: 分析結果（依元素分組）
+dfd_boundary_cross: 此資料流跨越信任邊界「{boundary}」：不能假設兩端已經驗證過彼此，應在邊界處重新驗證輸入與身份。
+dfd_entity_s: 確認外部實體「{name}」的身份在進入系統邊界前已被正確驗證，而非單純信任其自稱的身份。
+dfd_entity_r: 確認來自外部實體「{name}」的操作，有留下可歸責、不可被其自行竄改的紀錄。
+dfd_process_s: 確認呼叫流程「{name}」的呼叫者身份已被驗證，而非僅憑內部網路位置判斷可信任。
+dfd_process_t: 確認流程「{name}」對輸入資料做了完整性／合法性驗證，避免被竄改的輸入影響處理邏輯。
+dfd_process_r: 確認流程「{name}」的關鍵動作有留下可歸責、不可被操作者自行竄改的紀錄。
+dfd_process_i: 確認流程「{name}」不會意外洩漏內部結構、錯誤堆疊或除錯資訊。
+dfd_process_d: 確認流程「{name}」有速率限制或資源配額，避免被單一來源耗盡。
+dfd_process_e: 確認流程「{name}」的權限檢查在自己內部執行，而非依賴呼叫方自報的角色或前端隱藏。
+dfd_store_t: 確認寫入「{name}」的資料有完整性保護，讀取時能偵測是否遭竄改。
+dfd_store_r: 確認「{name}」的異動有稽核紀錄，且紀錄本身有防竄改機制。
+dfd_store_i: 確認「{name}」的存取有欄位層級的授權控制，特別是機敏資料。
+dfd_store_d: 確認「{name}」有容量或查詢複雜度限制，避免被耗盡或拖垮效能。
+dfd_flow_t: 確認資料流「{name}」在傳輸中有完整性保護（如簽章、TLS），能偵測是否遭竄改。
+dfd_flow_i: 確認資料流「{name}」傳輸的內容沒有超出必要範圍，且在傳輸中有機密性保護。
+dfd_flow_d: 確認資料流「{name}」的來源端有速率限制，避免被用於對下游發動洪水攻擊。
 case_study: |
   **從對立到協作的三年**——金融機構導入自動化安全掃描時，最大的阻力往往不是技術，而是信任：工程團隊擔心安全關卡拖慢交付，資安團隊擔心妥協換來假象的安全感。這正是我在果核數位 Hacker Talk〈建構安全軟體從有效溝通開始〉與 DevOpsDays Taipei 2024〈DevOps + Sec：強力後盾還是麻煩製造者？〉分享的核心命題。
 

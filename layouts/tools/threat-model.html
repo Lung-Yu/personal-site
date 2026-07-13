@@ -4,39 +4,66 @@
   <p class="prose">{{ i18n "stride_intro" }}</p>
   <p class="tool-hint">{{ i18n "tool_privacy_note" }}</p>
 
-  <div class="tool" id="stride-tool">
-    <div class="stride-form">
-      <label class="stride-check"><input type="checkbox" id="q-auth"> {{ i18n "stride_q_auth" }}</label>
-      <label class="stride-check"><input type="checkbox" id="q-internet"> {{ i18n "stride_q_internet" }}</label>
-      <label class="stride-check"><input type="checkbox" id="q-pii"> {{ i18n "stride_q_pii" }}</label>
-      <label class="stride-check"><input type="checkbox" id="q-thirdparty"> {{ i18n "stride_q_thirdparty" }}</label>
-      <label class="stride-check"><input type="checkbox" id="q-payment"> {{ i18n "stride_q_payment" }}</label>
-      <label class="stride-check"><input type="checkbox" id="q-ai"> {{ i18n "stride_q_ai" }}</label>
-      <label class="stride-check"><input type="checkbox" id="q-multitenant"> {{ i18n "stride_q_multitenant" }}</label>
+  <div class="tool dfd-tool" id="dfd-tool">
+    <div class="dfd-toolbar">
+      <button type="button" class="ghost" data-add="entity">{{ i18n "dfd_add_entity" }}</button>
+      <button type="button" class="ghost" data-add="process">{{ i18n "dfd_add_process" }}</button>
+      <button type="button" class="ghost" data-add="store">{{ i18n "dfd_add_store" }}</button>
+      <button type="button" class="ghost" data-add="boundary">{{ i18n "dfd_add_boundary" }}</button>
+      <button type="button" class="ghost" id="dfd-connect-btn">{{ i18n "dfd_connect" }}</button>
+      <button type="button" class="ghost" id="dfd-delete-btn">{{ i18n "dfd_delete" }}</button>
+      <button type="button" class="ghost" id="dfd-clear-btn">{{ i18n "dfd_clear" }}</button>
+      <button type="button" class="primary" id="dfd-analyze-btn">{{ i18n "dfd_analyze" }}</button>
     </div>
-    <div class="tool-actions">
-      <button type="button" id="stride-generate-btn" class="primary">{{ i18n "stride_generate" }}</button>
-      <button type="button" id="stride-copy-btn" class="ghost" hidden data-label="{{ i18n "stride_copy" }}" data-copied="{{ i18n "stride_copied" }}">{{ i18n "stride_copy" }}</button>
-    </div>
-    <div id="stride-result" class="tool-result" hidden>
-      <h4>{{ i18n "stride_result_label" }}</h4>
-      <div id="stride-groups" class="stride-groups"></div>
+    <p class="tool-hint" id="dfd-status">{{ i18n "dfd_hint" }}</p>
+    <svg id="dfd-canvas" class="dfd-canvas" viewBox="0 0 800 420" aria-label="DFD editor">
+      <defs>
+        <marker id="dfd-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="var(--gold-2)"></path>
+        </marker>
+      </defs>
+      <g id="dfd-flows"></g>
+      <g id="dfd-boundaries"></g>
+      <g id="dfd-nodes"></g>
+    </svg>
+    <div id="dfd-result" class="tool-result" hidden>
+      <div class="tool-actions">
+        <button type="button" id="dfd-copy-btn" class="ghost" hidden data-label="{{ i18n "dfd_copy" }}" data-copied="{{ i18n "dfd_copied" }}">{{ i18n "dfd_copy" }}</button>
+      </div>
+      <h4>{{ i18n "dfd_result_label" }}</h4>
+      <div id="dfd-groups" class="stride-groups"></div>
     </div>
   </div>
 </section>
 
-<script type="application/json" id="stride-strings">
+<script type="application/json" id="dfd-strings">
 {
-  "labels": { "S": {{ i18n "stride_s" }}, "T": {{ i18n "stride_t" }}, "R": {{ i18n "stride_r" }}, "I": {{ i18n "stride_i" }}, "D": {{ i18n "stride_d" }}, "E": {{ i18n "stride_e" }} },
-  "base": { "S": [{{ i18n "stride_base_s" }}], "T": [{{ i18n "stride_base_t" }}], "R": [{{ i18n "stride_base_r" }}], "I": [{{ i18n "stride_base_i" }}], "D": [{{ i18n "stride_base_d" }}], "E": [{{ i18n "stride_base_e" }}] },
-  "conditional": {
-    "q-auth": [ { "cat": "S", "text": {{ i18n "stride_auth_s" }} }, { "cat": "E", "text": {{ i18n "stride_auth_e" }} } ],
-    "q-internet": [ { "cat": "D", "text": {{ i18n "stride_internet_d" }} }, { "cat": "I", "text": {{ i18n "stride_internet_i" }} } ],
-    "q-pii": [ { "cat": "I", "text": {{ i18n "stride_pii_i" }} }, { "cat": "T", "text": {{ i18n "stride_pii_t" }} } ],
-    "q-thirdparty": [ { "cat": "S", "text": {{ i18n "stride_thirdparty_s" }} }, { "cat": "I", "text": {{ i18n "stride_thirdparty_i" }} } ],
-    "q-payment": [ { "cat": "R", "text": {{ i18n "stride_payment_r" }} }, { "cat": "T", "text": {{ i18n "stride_payment_t" }} } ],
-    "q-ai": [ { "cat": "T", "text": {{ i18n "stride_ai_t" }} }, { "cat": "I", "text": {{ i18n "stride_ai_i" }} } ],
-    "q-multitenant": [ { "cat": "E", "text": {{ i18n "stride_multitenant_e" }} }, { "cat": "S", "text": {{ i18n "stride_multitenant_s" }} } ]
+  "strideLabels": { "S": {{ i18n "stride_s" }}, "T": {{ i18n "stride_t" }}, "R": {{ i18n "stride_r" }}, "I": {{ i18n "stride_i" }}, "D": {{ i18n "stride_d" }}, "E": {{ i18n "stride_e" }} },
+  "typeLabels": { "entity": {{ i18n "dfd_label_entity" }}, "process": {{ i18n "dfd_label_process" }}, "store": {{ i18n "dfd_label_store" }}, "boundary": {{ i18n "dfd_label_boundary" }}, "flow": {{ i18n "dfd_label_flow" }} },
+  "prompts": {
+    "entity": {{ i18n "dfd_prompt_entity" }},
+    "process": {{ i18n "dfd_prompt_process" }},
+    "store": {{ i18n "dfd_prompt_store" }},
+    "boundary": {{ i18n "dfd_prompt_boundary" }},
+    "flow": {{ i18n "dfd_prompt_flow" }}
+  },
+  "placingHint": {{ i18n "dfd_placing_hint" }},
+  "connectHint": {{ i18n "dfd_connect_hint" }},
+  "defaultHint": {{ i18n "dfd_hint" }},
+  "emptyHint": {{ i18n "dfd_empty_hint" }},
+  "confirmClear": {{ i18n "dfd_confirm_clear" }},
+  "boundaryCross": {{ i18n "dfd_boundary_cross" }},
+  "applicable": {
+    "entity": ["S", "R"],
+    "process": ["S", "T", "R", "I", "D", "E"],
+    "store": ["T", "R", "I", "D"],
+    "flow": ["T", "I", "D"]
+  },
+  "elementText": {
+    "entity": { "S": {{ i18n "dfd_entity_s" }}, "R": {{ i18n "dfd_entity_r" }} },
+    "process": { "S": {{ i18n "dfd_process_s" }}, "T": {{ i18n "dfd_process_t" }}, "R": {{ i18n "dfd_process_r" }}, "I": {{ i18n "dfd_process_i" }}, "D": {{ i18n "dfd_process_d" }}, "E": {{ i18n "dfd_process_e" }} },
+    "store": { "T": {{ i18n "dfd_store_t" }}, "R": {{ i18n "dfd_store_r" }}, "I": {{ i18n "dfd_store_i" }}, "D": {{ i18n "dfd_store_d" }} },
+    "flow": { "T": {{ i18n "dfd_flow_t" }}, "I": {{ i18n "dfd_flow_i" }}, "D": {{ i18n "dfd_flow_d" }} }
   }
 }
 </script>
