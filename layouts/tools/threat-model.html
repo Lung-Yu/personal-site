@@ -1,0 +1,45 @@
+{{ define "main" }}
+<section class="reveal">
+  <p class="eyebrow">{{ .Title }}</p>
+  <p class="prose">{{ i18n "stride_intro" }}</p>
+  <p class="tool-hint">{{ i18n "tool_privacy_note" }}</p>
+
+  <div class="tool" id="stride-tool">
+    <div class="stride-form">
+      <label class="stride-check"><input type="checkbox" id="q-auth"> {{ i18n "stride_q_auth" }}</label>
+      <label class="stride-check"><input type="checkbox" id="q-internet"> {{ i18n "stride_q_internet" }}</label>
+      <label class="stride-check"><input type="checkbox" id="q-pii"> {{ i18n "stride_q_pii" }}</label>
+      <label class="stride-check"><input type="checkbox" id="q-thirdparty"> {{ i18n "stride_q_thirdparty" }}</label>
+      <label class="stride-check"><input type="checkbox" id="q-payment"> {{ i18n "stride_q_payment" }}</label>
+      <label class="stride-check"><input type="checkbox" id="q-ai"> {{ i18n "stride_q_ai" }}</label>
+      <label class="stride-check"><input type="checkbox" id="q-multitenant"> {{ i18n "stride_q_multitenant" }}</label>
+    </div>
+    <div class="tool-actions">
+      <button type="button" id="stride-generate-btn" class="primary">{{ i18n "stride_generate" }}</button>
+      <button type="button" id="stride-copy-btn" class="ghost" hidden data-label="{{ i18n "stride_copy" }}" data-copied="{{ i18n "stride_copied" }}">{{ i18n "stride_copy" }}</button>
+    </div>
+    <div id="stride-result" class="tool-result" hidden>
+      <h4>{{ i18n "stride_result_label" }}</h4>
+      <div id="stride-groups" class="stride-groups"></div>
+    </div>
+  </div>
+</section>
+
+<script type="application/json" id="stride-strings">
+{
+  "labels": { "S": {{ i18n "stride_s" }}, "T": {{ i18n "stride_t" }}, "R": {{ i18n "stride_r" }}, "I": {{ i18n "stride_i" }}, "D": {{ i18n "stride_d" }}, "E": {{ i18n "stride_e" }} },
+  "base": { "S": [{{ i18n "stride_base_s" }}], "T": [{{ i18n "stride_base_t" }}], "R": [{{ i18n "stride_base_r" }}], "I": [{{ i18n "stride_base_i" }}], "D": [{{ i18n "stride_base_d" }}], "E": [{{ i18n "stride_base_e" }}] },
+  "conditional": {
+    "q-auth": [ { "cat": "S", "text": {{ i18n "stride_auth_s" }} }, { "cat": "E", "text": {{ i18n "stride_auth_e" }} } ],
+    "q-internet": [ { "cat": "D", "text": {{ i18n "stride_internet_d" }} }, { "cat": "I", "text": {{ i18n "stride_internet_i" }} } ],
+    "q-pii": [ { "cat": "I", "text": {{ i18n "stride_pii_i" }} }, { "cat": "T", "text": {{ i18n "stride_pii_t" }} } ],
+    "q-thirdparty": [ { "cat": "S", "text": {{ i18n "stride_thirdparty_s" }} }, { "cat": "I", "text": {{ i18n "stride_thirdparty_i" }} } ],
+    "q-payment": [ { "cat": "R", "text": {{ i18n "stride_payment_r" }} }, { "cat": "T", "text": {{ i18n "stride_payment_t" }} } ],
+    "q-ai": [ { "cat": "T", "text": {{ i18n "stride_ai_t" }} }, { "cat": "I", "text": {{ i18n "stride_ai_i" }} } ],
+    "q-multitenant": [ { "cat": "E", "text": {{ i18n "stride_multitenant_e" }} }, { "cat": "S", "text": {{ i18n "stride_multitenant_s" }} } ]
+  }
+}
+</script>
+{{ $js := resources.Get "js/threat-model.js" | fingerprint }}
+<script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ end }}

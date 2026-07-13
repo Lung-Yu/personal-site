@@ -1,0 +1,15 @@
+{{ define "main" }}
+<section class="reveal">
+  <p class="eyebrow">{{ .Title }}</p>
+  <p class="prose">{{ i18n "tools_intro" }}</p>
+  <ul class="cards tools-cards">
+    {{ range .Pages }}
+    <li class="card">
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      <p>{{ .Params.summary }}</p>
+    </li>
+    {{ end }}
+  </ul>
+  <p class="note">{{ i18n "tools_list_note" }}</p>
+</section>
+{{ end }}

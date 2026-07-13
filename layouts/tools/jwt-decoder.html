@@ -1,0 +1,50 @@
+{{ define "main" }}
+<section class="reveal">
+  <p class="eyebrow">{{ .Title }}</p>
+  <p class="prose">{{ .Params.summary }}</p>
+  <p class="tool-hint">{{ i18n "tool_privacy_note" }}</p>
+
+  <div class="tool" id="jwt-tool">
+    <label for="jwt-input">{{ i18n "jwt_input_label" }}</label>
+    <textarea id="jwt-input" rows="5" spellcheck="false" placeholder="{{ i18n "jwt_placeholder" }}"></textarea>
+    <div class="tool-actions">
+      <button type="button" id="jwt-decode-btn" class="primary">{{ i18n "jwt_decode" }}</button>
+      <button type="button" id="jwt-clear-btn" class="ghost">{{ i18n "jwt_clear" }}</button>
+    </div>
+    <p class="tool-hint">{{ i18n "jwt_hint" }}</p>
+    <p id="jwt-error" class="tool-error" hidden></p>
+    <div id="jwt-result" class="tool-result" hidden>
+      <div class="jwt-cols">
+        <div>
+          <h4>{{ i18n "jwt_header_label" }}</h4>
+          <pre id="jwt-header"></pre>
+        </div>
+        <div>
+          <h4>{{ i18n "jwt_payload_label" }}</h4>
+          <pre id="jwt-payload"></pre>
+        </div>
+      </div>
+      <h4 class="findings-label">{{ i18n "jwt_findings_label" }}</h4>
+      <div id="jwt-findings" class="findings"></div>
+    </div>
+  </div>
+</section>
+
+<script type="application/json" id="jwt-strings">
+{
+  "errFormat": {{ i18n "jwt_err_format" }},
+  "errJson": {{ i18n "jwt_err_json" }},
+  "noFindings": {{ i18n "jwt_no_findings" }},
+  "f": {
+    "algNone": { "level": "critical", "title": {{ i18n "jwt_f_alg_none_title" }}, "desc": {{ i18n "jwt_f_alg_none_desc" }} },
+    "noExp": { "level": "high", "title": {{ i18n "jwt_f_no_exp_title" }}, "desc": {{ i18n "jwt_f_no_exp_desc" }} },
+    "expired": { "level": "info", "title": {{ i18n "jwt_f_expired_title" }}, "desc": {{ i18n "jwt_f_expired_desc" }} },
+    "longLived": { "level": "medium", "title": {{ i18n "jwt_f_long_lived_title" }}, "desc": {{ i18n "jwt_f_long_lived_desc" }} },
+    "sensitive": { "level": "high", "title": {{ i18n "jwt_f_sensitive_title" }}, "desc": {{ i18n "jwt_f_sensitive_desc" }} },
+    "hmac": { "level": "info", "title": {{ i18n "jwt_f_hmac_title" }}, "desc": {{ i18n "jwt_f_hmac_desc" }} }
+  }
+}
+</script>
+{{ $js := resources.Get "js/jwt-decoder.js" | fingerprint }}
+<script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ end }}

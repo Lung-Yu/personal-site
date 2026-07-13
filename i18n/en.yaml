@@ -25,6 +25,106 @@ more_case_studies: More case studies
 more_projects: More projects
 diagram_financial_alt: A 3-year phased rollout diagram — WebInspect and Fortify SCA run parallel black/white-box scans feeding a Jenkins distributed-scanning architecture, with results embedded into the existing development approval workflow
 scroll: Scroll to explore
+tools: Tools
+tools_intro: "Three browser-only security tools — nothing is ever sent anywhere; close the tab and there's no trace. They're deliberately scoped: decoding and linting, not a substitute for human review."
+tools_list_note: Source for all three lives in this site's repo; happy to walk through the implementation in a call.
+tool_jwt_title: JWT Decoder & Risk Checker
+tool_jwt_summary: Paste a JWT, decode the Header/Payload offline, and flag common structural risks.
+tool_csp_title: CSP Policy Analyzer
+tool_csp_summary: Paste a Content-Security-Policy string and check it against common weak configurations.
+tool_stride_title: Threat Model Quick-Check Generator
+tool_stride_summary: Answer a few questions about the system and get a starter STRIDE checklist.
+tool_privacy_note: All processing happens in your browser. This site never receives, logs, or transmits anything you enter here.
+jwt_input_label: JWT
+jwt_placeholder: Paste a JWT in eyJhbGciOi... format
+jwt_decode: Decode
+jwt_clear: Clear
+jwt_hint: This tool only parses the Base64 content and checks structure — it does not verify the signature. Without the key, authenticity can't be confirmed; anyone holding the token can see what's shown here.
+jwt_header_label: Header
+jwt_payload_label: Payload
+jwt_findings_label: Findings
+jwt_no_findings: No known structural risks found by this tool (this does not mean the signature is valid or the content is trustworthy).
+jwt_err_format: Format error — a JWT should be 3 dot-separated segments (Header.Payload.Signature).
+jwt_err_json: Content could not be parsed as JSON — this may not be a valid JWT.
+jwt_f_alg_none_title: Algorithm is none
+jwt_f_alg_none_desc: This token declares alg:none — no signature at all, so anyone can forge its contents. Servers must explicitly reject alg=none tokens.
+jwt_f_no_exp_title: Missing expiry (exp)
+jwt_f_no_exp_desc: No exp claim — if leaked, this token stays valid forever with no time-based expiry.
+jwt_f_expired_title: Token has expired
+jwt_f_expired_desc: exp is earlier than now — per spec this token should already be rejected (shown here for structural review only).
+jwt_f_long_lived_title: Long lifetime
+jwt_f_long_lived_desc: Validity exceeds 30 days. If this is an access token, consider a shorter lifetime paired with a refresh-token flow instead.
+jwt_f_sensitive_title: Payload may contain sensitive fields
+jwt_f_sensitive_desc: Field names that look sensitive were detected ({fields}). A JWT payload is only Base64-encoded, not encrypted — anyone can decode it, so it shouldn't hold passwords, secrets, or similar data.
+jwt_f_hmac_title: Symmetric signing algorithm
+jwt_f_hmac_desc: alg is {alg} — signing and verification share one secret key. If that key ever appeared in frontend code, a mobile app, or a public repo, tokens could be forged.
+csp_input_label: CSP
+csp_placeholder: "Paste a CSP string, e.g.: default-src 'none'; script-src 'self'"
+csp_analyze: Analyze
+csp_clear: Clear
+csp_hint: Parsed entirely in your browser. Paste either the raw HTTP header value or a <meta> tag's content attribute.
+csp_directives_label: Parsed directives
+csp_findings_label: Findings
+csp_no_findings: No known common weaknesses found by this tool.
+csp_err_empty: Paste a CSP string first.
+csp_f_unsafe_inline_title: Allows unsafe-inline
+csp_f_unsafe_inline_desc: "{directive} includes 'unsafe-inline' — this gives up CSP's protection against inline script/style-based XSS."
+csp_f_unsafe_eval_title: Allows unsafe-eval
+csp_f_unsafe_eval_desc: "{directive} includes 'unsafe-eval' — allows eval() and similar dynamic code execution, widening what XSS can do."
+csp_f_wildcard_title: Overly permissive source
+csp_f_wildcard_desc: "{directive} allows any origin ({source}) — effectively no restriction on where resources load from."
+csp_f_no_object_src_title: object-src not set
+csp_f_no_object_src_desc: object-src is unrestricted — plugin content could be used to bypass other restrictions; consider setting it explicitly to 'none'.
+csp_f_no_base_uri_title: base-uri not set
+csp_f_no_base_uri_desc: An injected <base> tag could hijack where relative-path resources load from; consider setting base-uri to 'self' or 'none'.
+csp_f_no_frame_ancestors_title: frame-ancestors not set
+csp_f_no_frame_ancestors_desc: The page could be framed for clickjacking; consider setting frame-ancestors to 'none' or 'self' as appropriate.
+csp_f_no_default_src_title: default-src not set
+csp_f_no_default_src_desc: Resource types not otherwise listed fall back to the browser default (usually unrestricted) — consider setting default-src as a safety baseline.
+csp_f_style_unsafe_inline_title: style-src allows unsafe-inline
+csp_f_style_unsafe_inline_desc: Lower risk than script-src, but can still be leveraged for CSS-injection-based data exfiltration.
+csp_f_no_report_title: No violation reporting endpoint
+csp_f_no_report_desc: Neither report-uri nor report-to is set — CSP violations won't be logged, making it hard to know how the policy performs in practice.
+csp_f_default_wildcard_title: default-src is overly permissive
+csp_f_default_wildcard_desc: "default-src allows any origin ({source}). Any resource type not overridden by a more specific directive (img-src, connect-src, font-src, etc.) inherits this wide-open setting."
+stride_intro: Check what applies to your system to generate a starter STRIDE checklist. This is a conversation starter, not a full threat model — real analysis still needs an architecture diagram and human review (see the ThreatBoard project).
+stride_generate: Generate checklist
+stride_copy: Copy checklist
+stride_copied: Copied
+stride_q_auth: Requires user login / authentication
+stride_q_internet: Reachable from the public internet
+stride_q_pii: Handles PII or sensitive data (financial, health, etc.)
+stride_q_thirdparty: Integrates third-party APIs or external services
+stride_q_payment: Has payment / billing functionality
+stride_q_ai: Uses AI/LLM components (RAG, agents, prompt assembly)
+stride_q_multitenant: Has multi-tenancy or role-based access levels
+stride_result_label: Checklist
+stride_s: S — Spoofing
+stride_t: T — Tampering
+stride_r: R — Repudiation
+stride_i: I — Information Disclosure
+stride_d: D — Denial of Service
+stride_e: E — Elevation of Privilege
+stride_base_s: Verify identity is authenticated at every trust boundary — not inferred from source IP or "it's on the internal network."
+stride_base_t: Verify integrity protection for key data in transit and at rest (signatures, checksums, DB-level change tracking).
+stride_base_r: Verify key operations (create/modify/delete/permission changes) are attributably logged, and that the log itself can't be altered by the actor.
+stride_base_i: Verify error messages, API responses, and logs don't accidentally leak internal structure, stack traces, or sensitive data.
+stride_base_d: Verify key endpoints have rate limiting or resource quotas so a single source can't exhaust system resources.
+stride_base_e: Verify permission checks run server-side, not just hidden in the frontend UI.
+stride_auth_s: Check whether login can resist credential stuffing and session fixation.
+stride_auth_e: Verify account-recovery flows (password reset, MFA re-binding) can't themselves become a privilege-escalation bypass.
+stride_internet_d: Assess whether WAF/CDN-level traffic protection is needed, especially against application-layer DDoS.
+stride_internet_i: Verify public-facing services don't leak stack details via version headers or debug endpoints.
+stride_pii_i: Inventory every storage, transmission, and logging path for PII; confirm it meets minimal-disclosure and compliance requirements.
+stride_pii_t: Verify PII access and modification have field-level authorization, not just whole-table permissions.
+stride_thirdparty_s: Verify third-party API communication authenticates the other party (cert chain, signatures) to prevent MITM response forgery.
+stride_thirdparty_i: Check that data sent to third parties isn't broader than necessary (over-sharing).
+stride_payment_r: Verify payment transactions have non-repudiable records (signatures, reconciliation against the payment gateway's transaction IDs).
+stride_payment_t: Verify amount/currency and other key fields are re-validated server-side, not trusted from client input.
+stride_ai_t: Assess prompt-injection risk — can user input or retrieved content override system instructions or trigger unintended tool calls?
+stride_ai_i: Verify model output doesn't leak training data, system prompts, or another user's content (cross-user contamination).
+stride_multitenant_e: Verify tenant/role data access is enforced at the data layer, not just in application logic, to prevent horizontal privilege escalation (IDOR).
+stride_multitenant_s: Verify the tenant identifier can't be set or tampered with by the client request itself.
 case_study: |
   **Three years, from friction to trust.** When financial institutions adopt automated security scanning, the real obstacle is rarely technical — it's trust. Engineering teams fear security gates will slow delivery; security teams fear compromise will buy only the illusion of safety. That's the core argument I made at Digicentre's Hacker Talk ("Building Secure Software Starts with Effective Communication") and DevOpsDays Taipei 2024 ("DevOps + Sec: Strong Support or Troublemakers?").
 

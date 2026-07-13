@@ -78,8 +78,8 @@ for lang, home, extra in [
             else:
                 check(probe in home_html, f"{lang} 頁面缺少 {name}/{item['id']}")
 
-# 2b. 內容頁面雙語建置正確性：文章與案例故事的 zh/en 版都要產出
-for section in ["posts", "case-studies"]:
+# 2b. 內容頁面雙語建置正確性：文章、案例故事與工具頁的 zh/en 版都要產出
+for section in ["posts", "case-studies", "tools"]:
     section_dir = ROOT / "content" / section
     slugs = sorted({p.stem.removesuffix(".en") for p in section_dir.glob("*.md") if p.stem != "_index" and not p.stem.startswith("_index.")})
     for slug in slugs:

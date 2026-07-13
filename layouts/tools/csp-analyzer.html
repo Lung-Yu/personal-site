@@ -1,0 +1,48 @@
+{{ define "main" }}
+<section class="reveal">
+  <p class="eyebrow">{{ .Title }}</p>
+  <p class="prose">{{ .Params.summary }}</p>
+  <p class="tool-hint">{{ i18n "tool_privacy_note" }}</p>
+
+  <div class="tool" id="csp-tool">
+    <label for="csp-input">{{ i18n "csp_input_label" }}</label>
+    <textarea id="csp-input" rows="4" spellcheck="false" placeholder="{{ i18n "csp_placeholder" }}"></textarea>
+    <div class="tool-actions">
+      <button type="button" id="csp-analyze-btn" class="primary">{{ i18n "csp_analyze" }}</button>
+      <button type="button" id="csp-clear-btn" class="ghost">{{ i18n "csp_clear" }}</button>
+    </div>
+    <p class="tool-hint">{{ i18n "csp_hint" }}</p>
+    <p id="csp-error" class="tool-error" hidden></p>
+    <div id="csp-result" class="tool-result" hidden>
+      <h4>{{ i18n "csp_directives_label" }}</h4>
+      <table class="csp-table">
+        <thead><tr><th>Directive</th><th>Sources</th></tr></thead>
+        <tbody id="csp-directives"></tbody>
+      </table>
+      <h4 class="findings-label">{{ i18n "csp_findings_label" }}</h4>
+      <div id="csp-findings" class="findings"></div>
+    </div>
+  </div>
+</section>
+
+<script type="application/json" id="csp-strings">
+{
+  "errEmpty": {{ i18n "csp_err_empty" }},
+  "noFindings": {{ i18n "csp_no_findings" }},
+  "f": {
+    "unsafeInline": { "level": "high", "title": {{ i18n "csp_f_unsafe_inline_title" }}, "desc": {{ i18n "csp_f_unsafe_inline_desc" }} },
+    "unsafeEval": { "level": "high", "title": {{ i18n "csp_f_unsafe_eval_title" }}, "desc": {{ i18n "csp_f_unsafe_eval_desc" }} },
+    "wildcard": { "level": "high", "title": {{ i18n "csp_f_wildcard_title" }}, "desc": {{ i18n "csp_f_wildcard_desc" }} },
+    "noObjectSrc": { "level": "medium", "title": {{ i18n "csp_f_no_object_src_title" }}, "desc": {{ i18n "csp_f_no_object_src_desc" }} },
+    "noBaseUri": { "level": "medium", "title": {{ i18n "csp_f_no_base_uri_title" }}, "desc": {{ i18n "csp_f_no_base_uri_desc" }} },
+    "noFrameAncestors": { "level": "low", "title": {{ i18n "csp_f_no_frame_ancestors_title" }}, "desc": {{ i18n "csp_f_no_frame_ancestors_desc" }} },
+    "noDefaultSrc": { "level": "medium", "title": {{ i18n "csp_f_no_default_src_title" }}, "desc": {{ i18n "csp_f_no_default_src_desc" }} },
+    "styleUnsafeInline": { "level": "low", "title": {{ i18n "csp_f_style_unsafe_inline_title" }}, "desc": {{ i18n "csp_f_style_unsafe_inline_desc" }} },
+    "noReport": { "level": "info", "title": {{ i18n "csp_f_no_report_title" }}, "desc": {{ i18n "csp_f_no_report_desc" }} },
+    "defaultWildcard": { "level": "medium", "title": {{ i18n "csp_f_default_wildcard_title" }}, "desc": {{ i18n "csp_f_default_wildcard_desc" }} }
+  }
+}
+</script>
+{{ $js := resources.Get "js/csp-analyzer.js" | fingerprint }}
+<script type="module" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ end }}

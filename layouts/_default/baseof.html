@@ -50,6 +50,7 @@
     <a href="{{ $home }}#projects">{{ i18n "projects" }}</a>
     <a href="{{ $home }}#speaking">{{ i18n "speaking" }}</a>
     <a href="{{ "posts" | relLangURL }}">{{ i18n "posts" }}</a>
+    <a href="{{ "tools" | relLangURL }}">{{ i18n "tools" }}</a>
     <a href="{{ $home }}#contact">{{ i18n "contact" }}</a>
     {{ range .Translations }}<a class="lang" href="{{ .RelPermalink }}" hreflang="{{ .Language.Locale }}">{{ .Language.Label }}</a>{{ end }}
   </nav>
